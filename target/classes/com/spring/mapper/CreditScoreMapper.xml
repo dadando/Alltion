@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.CreditScoreMapper">
+	<resultMap type="SaleCreditScoreVO" id="SaleCreditScore">
+		<result property="sale_id" column="sale_id" />
+		<result property="sale_credit_score" column="sale_credit_score" />
+		<result property="sale_normal" column="sale_normal" />
+		<result property="sale_denial" column="sale_denial" />
+		<result property="sale_undelivered" column="sale_undelivered" />
+		<result property="sale_return" column="sale_return" />
+		<result property="sale_success_rate" column="sale_success_rate" />
+	</resultMap>
+	
+	<resultMap type="PurchaseCreditScoreVO" id="purchaseCreditScore">
+		<result property="purchase_id" column="purchase_id" />
+		<result property="purchase_credit_score" column="purchase_credit_score" />
+		<result property="purchase_normal" column="purchase_normal" />
+		<result property="purchase_denial" column="purchase_denial" />
+		<result property="purchase_undelivered" column="purchase_undelivered" />
+		<result property="purchase_return" column="purchase_return" />
+		<result property="purchase_success_rate" column="purchase_success_rate" />
+	</resultMap>
+	
+	<select id="getSaleCreditScore" parameterType="String" resultType="SaleCreditScoreVO">
+		SELECT * FROM sale_credit_score_list WHERE sale_id=#{sale_id}
+	</select>
+	
+	<select id="getSaleScoreInfo" parameterType="SaleCreditScoreVO">
+		SELECT sale_normal, sale_denial, sale_undelivered, sale_return FROM sale_credit_score_list WHERE sale_id=#{sale_id}
+	</select>
+	
+	<update id="saleNormalCount" parameterType="SaleCreditScoreVO">
+		UPDATE sale_credit_score_list SET sale_normal=sale_normal+1 WHERE sale_id=#{sale_id}
+	</update>
+	
+	<update id="saleDenialCount" parameterType="SaleCreditScoreVO">
+		UPDATE sale_credit_score_list SET sale_denial=sale_denial+1 WHERE sale_id=#{sale_id}
+	</update>
+	
+	<update id="saleUndeliveredCount" parameterType="SaleCreditScoreVO">
+		UPDATE sale_credit_score_list SET sale_undelivered=sale_undelivered+1 WHERE sale_id=#{sale_id}
+	</update>
+	
+	<update id="saleReturnCount" parameterType="SaleCreditScoreVO">
+		UPDATE sale_credit_score_list SET sale_return=sale_return+1 WHERE sale_id=#{sale_id}
+	</update>
+	
+	<update id="saleRateScoreCount" parameterType="SaleCreditScoreVO">
+		UPDATE sale_credit_score_list SET sale_success_rate=#{sale_success_rate}, sale_credit_score=#{sale_credit_score} WHERE sale_id=#{sale_id}
+	</update>
+	
+	
+	
+	<select id="getPurchaseCreditScore" parameterType="String" resultType="PurchaseCreditScoreVO">
+		SELECT * FROM purchase_credit_score_list WHERE purchase_id=#{purchase_id}
+	</select>
+	
+	<select id="getPurchaseScoreInfo" parameterType="PurchaseCreditScoreVO">
+		SELECT purchase_normal, purchase_denial, purchase_undelivered, purchase_return FROM purchase_credit_score_list WHERE purchase_id=#{purchase_id}
+	</select>
+	
+	<update id="purchaseNormalCount" parameterType="PurchaseCreditScoreVO">
+		UPDATE purchase_credit_score_list SET purchase_normal=purchase_normal+1 WHERE purchase_id=#{purchase_id}
+	</update>
+	
+	<update id="purchaseDenialCount" parameterType="PurchaseCreditScoreVO">
+		UPDATE purchase_credit_score_list SET purchase_denial=purchase_denial+1 WHERE purchase_id=#{purchase_id}
+	</update>
+	
+	<update id="purchaseUndeliveredCount" parameterType="PurchaseCreditScoreVO">
+		UPDATE purchase_credit_score_list SET purchase_undelivered=purchase_undelivered+1 WHERE purchase_id=#{purchase_id}
+	</update>
+	
+	<update id="purchaseReturnCount" parameterType="PurchaseCreditScoreVO">
+		UPDATE purchase_credit_score_list SET purchase_return=purchase_return+1 WHERE purchase_id=#{purchase_id}
+	</update>
+	
+	<update id="purchaseRateScoreCount" parameterType="PurchaseCreditScoreVO">
+		UPDATE purchase_credit_score_list SET purchase_success_rate=#{purchase_success_rate}, purchase_credit_score=#{purchase_credit_score} WHERE purchase_id=#{purchase_id}
+	</update>
+</mapper>

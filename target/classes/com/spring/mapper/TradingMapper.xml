@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.TradingMapper">
+
+	<!-- 경매마감된 상품을 거래중테이블에 삽입한다 -->
+	<insert id="tradingInsertTheProductEnd" parameterType="TradingVO">
+		insert into trading
+		values(
+			#{trading_product_number}, <!-- 상품번호 -->
+			#{trading_buyer_id}, <!-- 구매자아이디 -->
+			#{trading_price}, <!-- 거래가격 -->
+			to_date(to_char(sysdate, 'yyyy-mm-dd hh24:mi'), 'yyyy-mm-dd hh24:mi') + 1, <!-- 입금기한 -->
+			#{trading_waybill_deadline, jdbcType=DATE}, <!-- 운송장번호입력기한 -->
+			#{trading_purchase_deadline, jdbcType=DATE}, <!-- 구매확정기한 -->
+			#{trading_purchase_date, jdbcType=DATE}, <!-- 구매확정일 -->
+			#{trading_transaction_method, jdbcType=VARCHAR}, <!-- 거래방식 -->
+			#{trading_sample4_postcode, jdbcType=VARCHAR}, <!-- 우편번호 -->
+			#{trading_sample4_roadaddress, jdbcType=VARCHAR}, <!-- 도로명주소 -->
+			#{trading_sample4_jibunaddress, jdbcType=VARCHAR}, <!-- 지번주소 -->
+			#{trading_sample4_detailaddress, jdbcType=VARCHAR}, <!-- 상세주소 -->
+			#{trading_phone, jdbcType=VARCHAR}, <!-- 연락처 -->
+			#{trading_waybill_number, jdbcType=VARCHAR}, <!-- 운송장번호 -->
+			'입금대기', <!-- 진행상태 -->
+			sysdate <!-- 등록일 -->
+		)
+	</insert>
+	
+</mapper>

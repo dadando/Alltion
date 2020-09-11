@@ -1,0 +1,526 @@
+@charset "UTF-8";
+
+/*--------------------------------------------------------*/
+.Main {
+    width: 960px;
+    position: relative;
+    height: 100%;
+    min-height: 10px;
+    margin: 50px auto 20px auto;
+}
+
+.chargePageBox {
+    display: inline;
+    width: 100%;
+    padding: 20px;
+    background: no-repeat 643px 19px;
+}
+
+.charge_intro {
+    margin: 0 0 25px 3px;
+}
+
+.charge_intro h4 {
+    font-weight: bold;
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.charge_intro p {
+    font-size: 11px;
+    color: #555;
+    line-height: 150%;
+}
+
+.charge_intro p .bold {
+    font-weight: bold;
+    color: #c00;
+}
+
+
+.chargePageBox .menuBar {
+    width: 266px;
+    float: left;
+    display: inline;
+    overflow: hidden;
+    background: repeat-x left bottom;
+    margin-bottom: 10px;
+}
+
+.chargePageBox .menuBar li {
+    float: left;
+    display: inline;
+}
+
+.chargePageBox .menuBar button {
+    float: left;
+    display: inline;
+    padding-top: 9px;
+    height: 39px;
+    width: 133px;
+    text-align: center;
+    color: #666;
+    background: #ffd149;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid rgba(225, 217, 90, 0.16);
+    border-bottom: 1px solid #c00;
+    border-left: none;
+}
+
+.chargePageBox .menuBar .on {
+    border-left: 1px solid rgba(225, 217, 90, 0.16);
+}
+
+.chargePageBox .menuBar button.Tab_menu1 {
+    color: #c00;
+    border: 1px solid #c00;
+    border-bottom: 1px solid #fff;
+    background: none;
+    background: #F9A825;
+}
+
+.chargePageBox .menuBar button.Tab_menu2 {
+    color: #c00;
+    border: 1px solid #c00;
+    border-bottom: 1px solid #fff;
+    background: none;
+    background: #F9A825;
+}
+
+.XenoTabLayer .on {
+    display: block;
+}
+
+.chargePageBox .menuBar .noborder {
+    border-right: none;
+}
+
+.chargePageBox {
+    border-right: none;
+}
+
+
+.chargePageBox {
+    width: 1200px;
+    border-top: solid 1px rgba(225, 217, 90, 0.16);
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.tbl_money {
+    width: 100%;
+    min-height: 111.3px;
+    border-collapse: collapse;
+    height: 143px;
+    font-size: 14px;
+}
+
+.tbl_money tr {
+	border-bottom: 1px solid #dddddd;
+}
+
+.tbl_money th {
+    background: #f0f0f0;
+    text-align: center;
+    color: #000000;
+    font-weight: normal;
+    font-weight: bold;
+}
+
+
+
+.tbl_money td {
+    border-bottom: solid 1px #e0e0e0;
+    color: #666;
+    padding: 8px 0 8px 10px;
+    vertical-align: middle;
+    height: 19px;
+}
+
+.chargePageBox th {
+    text-align: center;
+    color: #666;
+    border-bottom: solid 1px #e0e0e0;
+    font-weight: normal;
+}
+.tabpanel th {
+	background-color: #f8f8f8;
+    text-align: center;
+    color: #666;
+    border-bottom: solid 1px #e0e0e0;
+    font-weight: normal;
+}
+.tabpanel td {
+	border-bottom: solid 1px #e0e0e0;
+    color: #666;
+    padding: 8px 0 8px 10px;
+    vertical-align: middle;
+    height: 19px;
+    width: 600px;
+}
+
+.chargePageBox td {
+    border-bottom: solid 1px #e0e0e0;
+    color: #666;
+    padding: 8px 0 8px 10px;
+    vertical-align: middle;
+    height: 19px;
+    width: 600px;
+}
+
+.chargePageBox .tbl_money .won img {
+    float: none;
+    margin-top: 0px;
+    vertical-align: top;
+    margin-left: 1px;
+}
+
+/*
+.chargePageBox .tbl_money input.text {
+    border: 1px solid #ccc;
+    padding: 1px 5px;
+    width: 140px;
+    height: 15px;
+}*/
+
+input.text1 {
+    padding: 1px 5px;
+    width: 270px;
+    height: 15px;
+}
+
+.text2 {
+    border-bottom: 1px solid #ccc;
+    padding: 1px 5px;
+    width: 270px;
+    height: 15px;
+}
+
+.text3 {
+    border-bottom: 1px solid #ccc;
+    padding: 1px 5px;
+    width: 270px;
+    height: 15px;
+}
+
+.chargePageBox .tbl_money label {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.chargePageBox .tbl_money .checkbox,
+.chargePageBox .tbl_money .radio {
+    margin: 0 2px 3px 0;
+}
+
+.chargePageBox .tbl_money select {
+    border: 1px solid #7f9db9;
+}
+
+.chargePageBox .submit {
+    width: 100%;
+    margin: 10px 0 10px;
+    text-align: center;
+}
+
+.XenoTabLayer {
+    display: none;
+}
+
+.XenoTabLayer.on {
+    display: block;
+}
+
+#charge_1,
+#charge_2 {
+    clear: both;
+    border: px solid #ccc;
+}
+
+#charge,
+#back {
+    display: none;
+}
+
+.menuControl:checked + label {
+    display: inline;
+}
+
+input[id="charge"]:checked ~ #charge_1 {
+    display: block;
+}
+
+input[id="back"]:checked ~ #charge_2 {
+    display: block;
+}
+
+
+.paylist {
+    background-color: rgba(230, 115, 17, 0.8);
+    box-sizing: border-box;
+    border-radius: 2px;
+    color: #ffffff;
+    width: 12%;
+    padding: 3px 0;
+}
+
+.paylist:hover {
+    background-color: rgb(245, 114, 114);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.wrap {
+    min-height: 450px;
+    width: 1300px;
+    margin: 0 auto;
+}
+
+/*--------------------------------------------------------*/
+
+/*충전 페이지 css*/
+.main_body {
+    width: 960px;
+    position: relative;
+    height: 100%;
+    min-height: 10px;
+    margin: 50px auto 20px auto;
+}
+
+.charging_title {
+    margin-bottom: 50px;
+    border-bottom: 2px solid #FFA30E;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.pay_notify {
+    background-color: rgba(240, 240, 240, 0.5);
+    font-size: 15px;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+.pay_notify ul li {
+    line-height: 30px;
+    padding-left: 10px;
+    position: relative;
+    color: #444444;
+}
+
+.pay_notify ul li::before {
+    position: absolute;
+    top: 13px;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #c6c9cb;
+    content: '';
+}
+
+body a.base_btn {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    height: 30px;
+    min-width: 100px;
+    line-height: 30px;
+    background: #dddddd;
+    font-size: 5px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    border-radius: 7px;
+    float: right;
+}
+
+/*----------------------------------------------*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+
+.tablist {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: table;
+    width: 100%;
+}
+
+.tablist .tab:hover {
+	background-color: #ffd149;
+	border-radius: 4px 4px 0 0;
+}
+
+/*
+.tablist .tab a:hover {
+	color: #ffffff;
+	font-weight: bold;
+}
+*/
+
+.tab {
+    position: relative;
+    display: table-cell;
+    margin-right: -4px;
+    text-align: center;
+}
+
+.tab:last-child {
+    border-right: solid 1px #ddd;
+}
+
+.tab a {
+    position: relative;
+    display: block;
+    padding: 15px 20px;
+    color: #666;
+    text-decoration: none;
+    z-index: 1;
+}
+
+.tab:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: #fff;
+}
+
+.tab-active:after {
+    top: -1px;
+}
+
+.tab-active:first-child:after, .tab-active:nth-child(2):after {
+	background-color: #FFAE36;
+	border-radius: 4px 4px 0 0;
+}
+
+.tab-active:nth-child(3):after {
+    border-top-color: #ffd600;
+}
+
+.tabpanel {
+    display: none;
+    padding: 20px;
+    background: #fff;
+}
+
+.tabpanel.show {
+    display: block;
+}
+
+.tabpanel h1 {
+    margin: 0 0 .3em;
+}
+
+.tabpanel p {
+    margin: 0 0 1.5em;
+}
+
+.tabpanel .submit input {
+	cursor: pointer;
+	border: 1px solid #000000;
+	background: #ffffff;
+	border-radius: 4px;
+	padding: 8px 16px;
+}
+
+.tabpanel .submit input:hover {
+	background: #000000;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.tabpanel .submit input:first-child {
+	margin-top: 24px;
+}
+
+
+#panel1 h1 {
+    color: #ff5e10;
+}
+
+#panel2 h1 {
+    color: #00ceee;
+}
+
+#panel3 h1 {
+    color: #ffd600;
+}
+
+.tab-menu {
+    display: none;
+}
+
+/* 반응형 */
+/*
+@media (max-width: 600px) {
+    .tab {
+        display: block;
+        display: none;
+        margin: 0;
+        border: none;
+    }
+
+    .tab:after {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .tab-active {
+        display: block;
+        top: 0;
+    }
+
+    .tab a {
+        border-bottom: solid 1px #ddd;
+    }
+
+    .tab-menu {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        margin-top: -12px;
+        width: 24px;
+        height: 22px;
+    }
+
+    .tab-menu .line {
+        height: 4px;
+        background-color: #333;
+        border-radius: 2px;
+        margin-bottom: 4px;
+    }
+}
+*/
+
+/* Page style */
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+.Main {
+    font-size: 16px;
+    line-height: 1.45;
+    width: 960px;
+    color: #333;
+    position: relative;
+    height: 100%;
+    max-height: 600px;
+    margin: 0 auto;
+}
+
+.paybox {
+    min-height: 400px;
+    max-height: 400px;
+}

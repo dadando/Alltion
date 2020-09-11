@@ -1,0 +1,443 @@
+/* 경매등록 시작 by.유빈 */
+/* 경매등록 공통사항 */
+.product {
+    max-width: 1200px;
+    margin: auto;
+/*    padding: 0 10px;*/
+}
+
+#product * {
+    letter-spacing: 0.1px;
+}
+
+/* 타이틀 */
+.product--title h1 {
+    margin: 40px 0 20px 0;
+    font-size: 30px;
+    font-weight: 900;
+    position: relative;
+    padding-bottom: 7px;
+}
+
+.product--title h1::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 88.5%;
+    bottom: 0px;
+    height: 2px;
+    background-color: #F9A825;
+}
+
+/* form 공통사항 */
+.product--form [class^="form--"] {
+    padding: 18px 0;
+}
+
+.product--form [class$="notice"] {
+    color: #3517E3;
+}
+
+.product--form [class$="subtitle"] {
+    margin: 20px 0;
+}
+
+.product--form [class$="subtitle"] .material-icons {
+    position: relative;
+    font-size: 23px;
+    font-weight: 600;
+    color: #3517E3;
+}
+
+.product--form [class$="subtitle"] .material-icons::before {
+    position: absolute;
+    padding-left: 30px;
+    color: #000;
+}
+
+.product--form [class$="form_wrap"] {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.product--form [class$="items"] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form_wrap--items__title {
+    text-align: center;
+    background: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    flex: 1 0 180px;
+}
+
+.form_wrap--items__contents {
+    flex: 9 0 500px;
+    padding: 0 20px;
+    border-bottom: 1px solid #ddd;
+    min-height: 50px;
+    max-width: 100%;
+}
+
+.product--form input[type="text"] {
+    border: 1px solid #dbdbdb;
+    width: 100%;
+    height: 33px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555;
+    margin: 9px 0;
+}
+
+.product--form input[type="text"]:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.product--form input[type="radio"] {
+    vertical-align: middle;
+    margin-bottom: 2px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.product--form select {
+    border: 1px solid #dbdbdb;
+    width: 250px;
+    font-size: 14px;
+    color: #555;
+}
+
+.product--form select:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.product--form select option {
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #555;
+}
+
+.form_wrap--items__contents select {
+    margin: 9px 0;
+    height: 33px;
+    padding: 0 6px;
+}
+
+.form_wrap--items__contents p {
+    margin: 7px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.form_wrap--items__contents span {
+    font-size: 14px;
+    color: #333;
+}
+
+.form_wrap--items__contents label {
+    font-size: 14px;
+    width: 90px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* 카테고리 시작 */
+.category--subtitle .material-icons::before {
+    content: "카테고리 선택";
+}
+
+.category--route {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.category--route div {
+    font-size: 15px;
+    border: 1px solid #ddd;
+    line-height: 3.3;
+}
+
+.category--route__title p {
+	width: 250px;
+    text-align: center;
+    background: #464646ed;
+    color: #fff;
+}
+
+.category--route__text {
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding-left: 20px;
+}
+
+.category--route__text p {
+    color: #333;
+}
+
+.category--select {
+    margin-top: 15px;
+}
+
+.category--select__01 {
+    margin-right: 5px;
+}
+/* 카테고리 끝 */
+
+/* 상품 정보 시작 */
+.info--subtitle .material-icons::before {
+    content: "상품 정보";
+}
+
+.form--info .info--subtitle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 13px;
+}
+
+.info--notice {
+    font-size: 15px;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+.note-editor {
+	margin-bottom: 10px;
+}
+
+.form--info .form_wrap--items__file {
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+	background-color: #f9f9f9;
+	border-radius: 4px;
+	border: 1px solid #dcdcdc;
+	display: inline-block;
+	color: #666666;
+	font-family: Arial;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 7px 25px;
+	text-shadow: 0px 1px 0px #ffffff;
+    line-height: 1.4;
+    width: 109px;
+}
+.form--info .form_wrap--items__file:hover {
+	background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	background-color: #e9e9e9;
+}
+.form--info .form_wrap--items__file:active {
+	position:relative;
+	top:1px;
+}
+
+#fileUpload { 
+    display: none;
+}
+
+#drop{
+    margin: 10px 0;
+    border: 1px solid #b6b5b5;
+    transition: all .12s ease-in-out;
+    width: 100%;
+    height: 220px;
+    background-color: #eee;
+    font-size: 14px;
+    color: #999;
+    position: relative;
+    justify-content: center;
+}
+
+#thumbnails {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    flex-wrap: nowrap;
+    overflow: auto;
+    /* 드래그방지 */
+	-ms-user-select: none; 
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.thumb {
+    margin: 0 15px;
+    flex: 0 0 130px;
+    height: 110px;
+    position: relative;
+}
+
+.thumb > img {
+    margin-top: -20px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #888;
+}
+
+.thumb > .close {
+    position: absolute;
+    top: -19px;
+    right: 0px;
+    cursor: pointer;
+    opacity: .5;
+    font-size: 22px;
+    font-weight: 1000;
+}
+
+.thumb > p {
+    word-break: break-all;
+    color: #555;
+    font-size: 13px;
+}
+/* 상품 정보 끝 */
+
+/* 경매 설정 시작 */
+.auction--subtitle .material-icons::before {
+    content: "경매 설정";
+}
+
+.form--auction .auction--form_wrap .endDate {
+    width: 230px;
+    background-color: #eee;
+}
+
+.form--auction .auction--form_wrap .fw700 {
+    margin-left: 35px;
+}
+/* 경매 설정 끝 */
+
+/* 거래 설정 시작 */
+.delivery--subtitle .material-icons::before {
+    content: "거래 설정";
+}
+
+.form--delivery .form_wrap--items__contents .directArea {
+    width: 350px;
+}
+/* 거래 설정 끝 */
+
+/* 기타 설정 시작 */
+.other--subtitle .material-icons::before {
+    content: "기타 설정";
+}
+
+.form--other .other--form_wrap .purchasePrice {
+    width: 250px;
+}
+
+.form--other .other--form_wrap p {
+    margin-bottom: 0;
+}
+/* 기타 설정 끝 */
+
+/* 경고 시작 */
+.product .form--warning {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 13px 12px;
+}
+
+.product .form--warning p{
+    font-size: 14px;
+    color: #555;
+}
+/* 경고 끝 */
+
+/* submit 시작 */
+.product .form--button {
+    text-align: center;
+    margin: 60px 0 40px 0;
+}
+
+.product .form--button a {
+    border-radius: 4px;
+    display: inline-block;
+	cursor: pointer;
+    font-size: 16px;
+/*    font-weight: bold;*/
+}
+
+.product .form--button a:active {
+    position: relative;
+	top: 1px;
+}
+
+.form-button__submit {
+/*	box-shadow: inset 0px 1px 0px 0px #99c3f7;*/
+	background-color: rgba(112, 112, 112, 0.8);
+	border: 1px solid #3d82e3;
+    box-sizing: border-box;
+	color: #ffffff;
+    border: 1px solid rgba(112, 112, 112, 0.4);
+    padding: 10px 65px;
+}
+
+.form-button__submit:hover {
+	background-color: #000000;
+    font-weight: bold;
+}
+
+.form-button__cancel {
+/*	box-shadow: inset 0px 1px 0px 0px #d7d5d5;*/
+/*	background-color: #b4b4b4;*/
+	border: 1px solid rgba(112, 112, 112, 0.8);
+    box-sizing: border-box;
+	color: #000000;
+    padding: 10px 47px;
+}
+.form-button__cancel:hover {
+    font-weight: bold;
+    border: 1px solid #000000;
+}
+/* submit 끝 */
+
+/* 단일 css */
+.product .product--form .wd150 {
+    width: 150px;
+}
+
+.product .product--form .wd120 {
+    width: 120px;
+}
+
+.product .product--form .wd90 {
+    width: 90px;
+}
+
+.product .product--form .fw700 {
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.product .product--form .flexCenter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.product .product--form .minH50 {
+    min-height: 50px;
+}
+
+.readonlyfalse {
+    background-color: #eee;
+}
+
+/* 경매등록 끝 by.유빈 */

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 
+<mapper namespace="com.spring.mapper.MemberMapper">
+
+<resultMap type="MemberVO" id = "memberResultMap">
+		<result property="member_name" column="member_name"/>
+	 	<result property="member_id" column="member_id"/>
+	 	<result property="member_password" column="member_password"/>
+	 	<result property="email" column="email"/>
+	 	<result property="member_phone" column="member_phone"/>
+	 	<result property="sample4_postcode" column ="sample4_postcode"/>
+	 	<result property="sample4_roadAddress" column="sample4_roadAddress"/>
+	 	<result property="sample4_jibunAddress" column="sample4_jibunAddress"/>
+	 	<result property="sample4_detailAddress" column="sample4_detailAddress"/>
+	 	<result property="member_delete" column="member_delete"/>
+		<result property="member_manager" column="member_manager"/>
+		<result property="member_date" column="member_date"/>
+		<result property="sale_id" column="sale_id"/>
+		<result property="purchase_id" column="purchase_id"/>
+	 </resultMap>
+	 
+	 <select id="userCheck" parameterType="MemberVO" resultType="int">
+	 	select count(*) 
+	 	from member
+	 	where member_id = #{member_id} 
+	 	and member_password = #{member_password} 
+	 	and member_delete = '0'
+	 </select>
+	 
+	 <insert id = "insertpurchase" parameterType = "PurchaseCreditScoreVO">
+	 	insert 
+	 	into 
+	 	purchase_credit_score_list 
+	 	(purchase_id)
+	 	values
+	 	(
+	 	#{purchase_id}
+	 	)
+
+	 </insert>
+	  
+	 <insert id = "insertsale" parameterType = "SaleCreditScoreVO">
+	 	insert 
+	 	into 
+	 	sale_credit_score_list 
+	 	(sale_id)
+	 	values
+	 	(
+	 	#{sale_id}
+	 	)
+	 </insert>
+	 
+	 <insert id="insertMember" parameterType="MemberVO">
+	 
+	insert into member values
+    (#{member_name},
+    #{member_id},
+    #{member_password},
+    #{email},#{member_phone},
+    #{sample4_postcode},
+    #{sample4_roadAddress},
+    #{sample4_jibunAddress},
+    #{sample4_detailAddress},
+    #{member_delete},
+    #{member_manager},
+    sysdate 
+    )
+	 
+	 </insert>
+	 
+	 <select id="idCheckService" parameterType="String" resultType="int">
+		select count(*) from member where member_id = #{member_id}
+	 </select>
+	 
+	 <select id="selectMember"  parameterType="String" resultType="MemberVO">
+	 	select * from member where member_id = #{member_id}
+	 </select>
+	 
+	 <update id="updateEmail" parameterType="MemberVO" >
+	 update member set email=#{email} where member_id=#{member_id}
+	 </update>
+	 
+	 <update id="updatePassword" parameterType="MemberVO" >
+	 update member set member_password=#{member_password} where member_id=#{member_id}
+	 </update>
+	 
+	 <update id="updatePhone" parameterType="MemberVO" >
+	 update member set member_phone=#{member_phone} where member_id=#{member_id}
+	 </update>
+	 
+	 <update id = "updateAddress" parameterType="MemberVO">
+	 update member set sample4_postcode=#{sample4_postcode}, sample4_roadAddress = #{sample4_roadAddress}, sample4_jibunAddress = #{sample4_jibunAddress}, sample4_detailAddress = #{sample4_detailAddress}  where member_id=#{member_id} 
+	 </update>
+	 
+	 <update id = "member_delete" parameterType = "MemberVO">
+	 update member set member_delete = 1 
+	 where member_id = #{member_id}
+	 </update>
+	 
+	 <!-- 매니저 체크 -->
+	 <select id ="getMember_manager" parameterType="String" resultType="int">
+	 	select
+	 		member_manager
+	 	from 
+	 		member
+	 	where 
+	 		member_id = #{userId}
+	 </select>
+</mapper>

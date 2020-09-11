@@ -1,0 +1,112 @@
+/* CSS RESET */
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #000000;
+    font-family: 'Noto Sans', 'Nanum Gothic', sans-serif;
+    letter-spacing: 0.1px;
+/*    border: 1px solid;*/
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+li {list-style: none;}
+
+
+/* admin_header 시작 by.유빈 */
+
+/* 공통영역 */
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    background: #fff;
+    box-shadow: 4px 8px 9px -2px #c7c5d8;
+    border-radius: .25rem;
+}
+
+#loadingImg {
+ 	position: fixed;
+	top: 45%;
+    left: 45%;
+}
+
+/* 헤더 */
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #343a40;
+    z-index: 100;
+}
+
+header > h1 {
+    color: #fff;
+    font-size: 27px;
+    margin: 10px 10px 10px 20px;
+}
+
+header > .logout {
+    margin: 10px 45px 10px 10px;
+    padding: 5px 0;
+    font-size: 20px;
+}
+
+header > .logout > i,
+header > .logout > span {
+    color: #868e96;
+}
+
+header > .logout:hover > i,
+header > .logout:hover > span {
+    color: #adb5bd;
+}
+
+/* 사이드바 */
+nav > .sidebar {
+    position: fixed;
+    top: 57px;
+    background-color: #343a40;
+    height: 100vh;
+}
+
+nav > .sidebar > li {
+    width: 220px;
+    line-height: 40px;
+    padding: 5px 0 5px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+nav > .sidebar > li > i {
+    top: 0.5px;
+    position: relative;
+    padding-right: 3px;
+}
+
+nav > .sidebar > li > i,
+nav > .sidebar > li > span {
+    color: #868e96;
+}
+
+nav > .sidebar > li:hover > i,
+nav > .sidebar > li:hover > span {
+    color: #adb5bd;
+}
+
+/* admin_header 끝 by.유빈 */

@@ -1,0 +1,52 @@
+/* 마이 페이지 영역 by 하나 */
+/* desktop-size(min:1280) */
+/* -- 마이 페이지 메인 - mypage.html */
+.myPage__main {
+    width: 600px;
+    margin: 120px auto;
+    text-align: center;
+    border: 1px solid rgba(238, 238, 238, 0.8);
+    box-shadow: 2px 2px 2px rgba(238, 238, 238, 0.8);
+    padding: 56px 40px 40px 40px;
+    border-radius: 4px;
+}
+
+.myPage__title {
+    font-size: 28px;
+    margin-bottom: 48px;
+}
+
+.myPage__category .material-icons {
+/*    display: block;*/
+    font-size: 36px;
+    margin-bottom: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 36px;
+    padding: 16px;
+}
+
+.myPage__category .material-icons:hover {
+    color: #ffa000;
+    border: 1px solid rgba(238, 238, 238, 0.8);
+}
+
+.myPage__category li {
+    display: inline-block;
+    width: 25%;
+    margin-left: -4px;
+    padding: 24px 0;
+/*    border: 1px solid #ffd149;*/
+}
+
+.myPage__menu {color: #616161;}
+
+.myPage__category li:first-child, .myPage__category li:nth-child(5) {margin-left: 0;}
+
+.myPage__category li:nth-child(2), .myPage__category li:nth-child(4), 
+.myPage__category li:nth-child(5), .myPage__category li:nth-child(7) {
+/*    background-color: #ffd149;*/
+}
+
+/* desktop-size(min:1280) */
+/* -- 마이 페이지 메인 */

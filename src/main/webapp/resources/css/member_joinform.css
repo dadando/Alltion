@@ -1,0 +1,138 @@
+        .joinWrap {
+            width: 490px;
+            margin: 160px auto;
+            border: 1px solid #FEE7C5;
+            border-radius: 4px;
+            box-shadow: 2px 2px 2px rgba(238, 238, 238, 0.8);
+        }
+        
+        .joinWrap > h3 {
+            width: 356px;
+            margin: 0 auto 32px auto;
+        }
+        
+        .joinWrap h2 {
+            margin-top: 24px;
+            margin-bottom: 50px;
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        .row_group {
+            width: 356px;
+            margin: 0 auto;
+        }
+        
+        .join_title {
+            font-size: 16px;
+        }
+        
+        .join_title_title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .join_row {
+            margin: 0 auto;
+            margin-bottom: 36px;
+            text-align: left;
+        }
+        .int {
+            margin-top: 4px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+            font-size: 16px;
+            width: 100%;
+            padding: 4px;
+            transition: border .2s;
+        }
+        
+        .int:focus {
+            border-bottom: 1px solid #F9A825;
+        }
+        
+        .int::placeholder {
+            font-size: 14px;
+        }
+        
+        .error_next_box {
+            display: block;
+            margin: 9px 0 -2px;
+            font-size: 12px;
+            line-height: 14px;
+            color: red;
+        }
+        .ps_box.int_id {
+            padding-right: 110px;
+        }
+        .ps_box.int_id_address {
+            padding-right: 25px;
+        }
+        .ps_box, .ps_box_disable {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 51px;
+            border: solid 1px #F9A825;
+            padding: 10px 14px 10px 14px;
+            background: #fff;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            vertical-align: top;
+            border-radius: 5px;
+        }
+        
+        .join_row:first-child {position: relative;}
+
+        
+        .base_btn {
+            position: absolute;
+            bottom: 4px;
+            right: 0;
+            display: inline-block;
+            padding: 0 10px;
+            height: 28px;
+            background: #F8C436;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            border-radius: 2px;
+            font-size: 14px;
+        }
+        
+        .base_btn1 {
+            position: absolute;
+            bottom: 4px;
+            right: 0;
+            display: inline-block;
+            padding: 0 10px;
+            height: 28px;
+            background: #F8C436;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            border-radius: 2px;
+            font-size: 14px;
+        }
+        
+        .base_btn.submit, .base_btn.cancel {
+            position: static;
+            width: 49%;
+            height: 40px;
+            line-height: 40px;
+        }
+        
+        .base_btn:hover {background-color: #F9A825;}
+        
+        #member_email {
+            width: 40%;
+        }
+        
+        #sample4_postcode {
+            width: 33%;
+        }
+        
+        .base_btn.address {
+            right: 67%;
+        }
+        

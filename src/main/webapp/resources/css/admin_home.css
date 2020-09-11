@@ -1,0 +1,102 @@
+/* admin_home 시작 by.유빈 */
+
+/* 공통영역 */
+
+[class $="chartWarp"] {
+    border: 1px solid #00000030;
+    margin-bottom: 30px;
+}
+
+[class $="chartWarp"] > [class $="title"] {
+    padding: .75rem 1.25rem;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid #00000030;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+[class $="chartWarp"] > [class $="title"] > i {
+    position: relative;
+    top: 1.5px;
+    padding-right: 5px;
+    font-size: 19px;
+}
+
+.tick {
+	font-size: 13px;
+}
+
+/* 메인내용 */
+section {
+    background: #e6e6e68c;
+    position: absolute;
+    top: 57px;
+    left: 220px;
+    right: 0;
+    padding: 30px 40px;
+    min-height: 1000px;
+}
+
+section > .title {
+    margin-bottom: 40px;
+    font-size: 30px;
+    font-weight: 900;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+section > .title::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    width: 63px;
+    bottom: -2px;
+    height: 2px;
+    background-color: #F9A825;
+}
+
+.mainConut--cardWarp {
+    flex-wrap: wrap;
+    margin: -10px -10px 20px -10px;
+}
+
+.mainConut--cardWarp > .card {
+    margin: 10px 10px;
+    padding: 17px 22px;
+    flex: 1 0 180px;
+    height: 100px;
+}
+
+.mainConut--title {
+    color: #787878;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.mainConut--content {
+    font-size: 28px;
+}
+
+.mainConut--content > span {
+    font-weight: 700;
+}
+
+.mainConut--content > i {
+    color: #686868
+}
+
+.cateCount--chartWarp {
+    flex: 0 0 33.3%;
+    margin-right: 20px;
+}
+
+.cateCount--chartWarp text {
+    font-size: 13px;
+}
+
+.dailySubscribers--chartWarp {
+    flex: 0 1 66.6%;
+}
+
+/* admin_home 끝 by.유빈 */

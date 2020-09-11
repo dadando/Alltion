@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- namespace="com.spring.mapper.SungjukMapper는 SungjukMapper인터페이스(SungjukMapper.class)의 이름을 사용한다. -->
+	<!-- root-context에서 아래와 같이 typeAliasesPackage를 설정하면 패키지 경로 생략 가능. -->
+<mapper namespace="com.spring.mapper.DetailMapper">
+	<!-- 
+	<select id="getDetail" parameterType="int" resultType="ProductVO">
+		select * from product where product_number=#{product_number}
+	</select>
+	 -->
+	 <!-- 상품정보 구하기 -->
+	<select id="getDetail" parameterType="int" resultType="ProductVO">
+	select
+		product_number, <!-- 상품번호 -->
+		product_id, <!-- 아이디 -->
+		product_category_1, <!-- 카테고리 1차 -->
+		product_category_2, <!-- 카테고리 2차 -->
+		product_subject, <!-- 상품제목 -->
+		product_content, <!-- 상품내용 -->
+		product_img_1, <!-- 이미지(썸네일)_1 -->
+		product_img_2, <!-- 이미지(썸네일)_2 -->
+		product_img_3, <!-- 이미지(썸네일)_3 -->
+		product_img_4, <!-- 이미지(썸네일)_4 -->
+		product_img_5, <!-- 이미지(썸네일)_5 -->
+		product_starting_price,  <!-- 경매시작가 -->
+		product_bidding_unit, <!-- 입찰단위 -->
+		to_char(product_end_date, 'yyyy-mm-dd hh24:mi') as product_end_date, <!-- 경매종료일 -->
+		product_delivery, <!-- 택배거래(비용) -->
+		product_transaction_area, <!-- 거래가능지역 -->
+		product_purchase_price, <!-- 즉시구매가격 -->
+		product_re_auction, <!-- 재경매 -->
+		product_current_price, <!-- 경매현재가 -->
+		product_bids, <!-- 입찰수 -->
+		product_participants, <!-- 참가자수 -->
+		product_credit_score, <!-- 신용도 -->
+		product_views, <!-- 조회수 -->
+		to_char(product_issue_date, 'yyyy-mm-dd hh24:mi') as product_issue_date, <!-- 등록일 -->
+		product_progress <!-- 진행상태 -->
+	from product
+	where product_number = #{product_number}
+	</select> 
+	
+	<!-- 상품 현재가 수정하기(응찰하기/즉시 구매하기	 를 누를때 실행됨) -->
+	<update	id="updateBoard" parameterType="ProductVO">
+		update product set product_current_price=#{price} where product_number=#{bid_product_number}
+	</update>
+	
+	<!-- 상품진행중 1로 바꿈(진행중:0 , 마감: 1) 응찰을 하다가 즉시구매를 만나거나 즉시구매하기 버튼 누를때 실행됨 -->
+	<update id="updateProductProgress" parameterType="int">
+		update product set product_progress =1 where product_number=#{bid_product_number}
+	</update>
+	
+	<!-- 시작가를 구한다. 첫응찰할때 사용 -->
+	<select id="selectNowPrice" parameterType="int" resultType="int">
+		select nvl(product_starting_price,0) from product where product_number=#{bid_product_number}
+	</select>
+	
+	<!-- 즉시구매가를 구한다. 즉시구매할때 사용한다. -->
+	<select id="selectPurchasePrice" parameterType="int" resultType="int">
+		select nvl(product_purchase_price,0) from product where product_number=#{bid_product_number}
+	</select>
+	
+	<!-- 판매자 정보를 구한다. -->
+	<select id="sellerTest" parameterType="String" resultType="Seller_Credit_Score_TestVO">
+		select * from sale_credit_score_list where sale_id = #{sale_id}
+	</select>
+	
+	<!-- 판매자 관련 리뷰리스트 -->
+	<select id="reviewList" resultType="ReviewVO">
+	<![CDATA[	
+		select
+		review_number,review_id,review_evaluator,review_evaluate,review_image,review_subject,
+		review_content,to_char(review_date,'YYYY-MM-dd') as review_date,review_no
+		from review
+		where review_id = #{review_id} and review_no>=#{review_startrow} and review_no<=#{review_endrow}
+		order by review_no desc
+	]]>
+	</select>
+	<!-- 리뷰리스트 갯수 -->
+	<select id="getReviewCount" parameterType="String" resultType="int">
+		select nvl(count(*),0) from review where review_id = #{review_id}
+	</select>
+	
+	<!-- 상품진행중 1로 바꿈(진행중:0 , 마감: 1) 남은 시간이 끝날때 실행됨 
+	<update id="update_product_progress" parameterType="int">
+		update product set product_progress = 1 where product_number = #{product_number}
+	</update>
+	-->
+	<!-- 조회수 업데이트 -->
+	<update id="viewcount" parameterType = "int">
+		update product set product_views = product_views +1 where product_number = #{product_number}
+	</update>
+	
+	<!-- 위시리스트 체크(중복체크) -->
+	<select id="getWishlistCount" resultType="int">
+		select nvl(count(*),0) from wish_list where wish_product_number = #{wish_product_number} and wish_id = #{wish_id}
+	</select>
+	
+	<!-- 위시 리스트에 추가하기 (중복체크 이후) -->
+	<insert id="insertWishList">
+		insert into wish_list values(#{wish_product_number},#{wish_id},sysdate+2)
+	</insert>
+</mapper>

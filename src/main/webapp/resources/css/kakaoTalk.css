@@ -1,0 +1,27 @@
+/* pc 화면 */
+@media (min-width: 768px) {
+    #kakao-talk-channel-chat-button {
+	width: 40px;
+    height: 40px;
+    position: fixed;
+    z-index: 999;
+    right: 24px; /* 화면 오른쪽으로부터의 거리 */
+    bottom: 24px; /* 화면 아래쪽으로부터의 거리 */
+    }
+}
+/* 모바일 화면 */
+@media (max-width:767px) {
+    #kakao-talk-channel-chat-button {
+	width: 40px;
+    height: 40px;
+    position: fixed;
+    z-index: 999;
+    right: 24px; /* 화면 오른쪽으로부터의 거리 */
+    bottom: 24px; /* 화면 아래쪽으로부터의 거리 */
+    }
+}
+
+#kakao-talk-channel-chat-button > a > img {
+	border-radius: 50%;
+    width: 100%;
+}

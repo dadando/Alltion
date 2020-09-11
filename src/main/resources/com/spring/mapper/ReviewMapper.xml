@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- namespace="com.spring.mapper.SungjukMapper는 SungjukMapper인터페이스(SungjukMapper.class)의 이름을 사용한다. -->
+	<!-- root-context에서 아래와 같이 typeAliasesPackage를 설정하면 패키지 경로 생략 가능. -->
+<mapper namespace="com.spring.mapper.ReviewMapper">
+	<select id="getReviewList" parameterType="String" resultType="ReviewVO">
+		select
+			review_number,		<!-- 리뷰테이블 고유번호 -->
+			review_id,			<!-- 판매자 아이디(리뷰달리는 아이디) -->
+			review_evaluator,	<!-- 구매자 아이디(리뷰다는 아이디) -->
+			review_evaluate,	<!-- 평가('매우 만족','만족','보통','불만족','매우 불만족') -->
+			review_image,		<!-- 썸네일 이미지 (1번 이미지 사용) -->
+			review_subject,		<!-- 리뷰달린 상품 제목 -->
+			review_content,		<!-- 리뷰 내용 -->
+			to_char(review_date,'yyyy-mm-dd hh24:mi') as review_date, <!-- 리뷰 작성 날짜 -->
+			review_no			<!-- 리뷰 넘버링 -->
+		from
+			review
+		where
+			review_id=#{userId}
+		order by
+			review_no desc
+	</select>
+</mapper>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- namespace="com.spring.mapper.SungjukMapper는 SungjukMapper인터페이스(SungjukMapper.class)의 이름을 사용한다. -->
+	<!-- root-context에서 아래와 같이 typeAliasesPackage를 설정하면 패키지 경로 생략 가능. -->
+<mapper namespace="com.spring.mapper.CommentMapper">
+	
+	<!-- 댓글리스트 구하기(상품번호를 통해서),등록된 날짜 역순(최근 등록순),comment_list_no는 페이징처리용 -->
+	<select id="commentlist" parameterType="int" resultType="CommentVO">
+		<![CDATA[	
+		select * 
+		from comment_list 
+		where comment_product_number = #{comment_product_number} and comment_list_no >= #{comment_startrow} and comment_list_no <= #{comment_endrow}
+		order by comment_list_no desc
+		]]>
+	</select>
+	
+	<!-- 댓글 등록하기(상품번호를 통해서),그룹넘버는 원댓글과 댓글의 답변을 그룹화 하기 위해서 사용-->
+	<insert id="commentinsert" parameterType="CommentVO">
+		<selectKey keyProperty="comment_number,comment_group_number" order="BEFORE" resultType="CommentVO">
+			select nvl(max(comment_number),0)+1 as comment_number,nvl(max(comment_group_number),0)+1 as comment_group_number from comment_list
+		</selectKey>
+		
+		insert into comment_list(comment_number,comment_group_number,comment_product_number,
+		comment_id,comment_content,comment_secret,comment_list_no)
+		values(#{comment_number},#{comment_group_number},#{comment_product_number},#{comment_id},#{comment_content},#{comment_secret},#{comment_list_no})
+	</insert>
+	
+	<!-- 댓글 수 구하기 -->
+	<select id="countcommentList" parameterType="int" resultType="int">
+		select 
+		nvl(max(comment_list_no),0)+1 as comment_list_no 
+		from comment_list 
+		where comment_product_number = #{comment_product_number}
+	</select>
+	
+	<!-- 댓글 삭제하기 -->
+	<update id="commentdelete" parameterType="CommentVO">
+		update comment_list set comment_is_deleted = '1' where comment_number = #{comment_number} and comment_product_number=#{comment_product_number}
+	</update>
+	
+	<!-- 댓글 수정하기 -->
+	<update id="commentupdate" parameterType="CommentVO">
+		update comment_list set comment_content = #{comment_content},comment_date = sysdate where comment_number = #{comment_number}
+	</update>
+	
+	<!-- 원 댓글의 정보를 구하기 -->
+	<select id="getOriginalInfo" parameterType="int" resultType="CommentVO">
+		select * from comment_list where comment_number = #{comment_original_number}
+	</select>
+	
+	<!-- 답글을 달때 답글이 들어갈 자리 만들기 -->
+	<update id="makereplylistno" parameterType="int">
+		<![CDATA[
+		update 
+		comment_list 
+		set comment_list_no = comment_list_no+1 
+		where comment_list_no >= #{comment_list_no}
+		]]>
+	</update>
+	
+	<!-- 답글달기 -->
+	<insert id="commentreply" parameterType="CommentVO">
+		<selectKey keyProperty="comment_number" order="BEFORE" resultType="int">
+			select nvl(max(comment_number),0)+1 as comment_number from comment_list
+		</selectKey>
+		insert into comment_list(comment_number,comment_group_number,comment_product_number,
+		comment_id,comment_original_id,comment_content,comment_lev,comment_secret,comment_list_no) 
+		values(#{comment_number},#{comment_group_number},#{comment_product_number},#{comment_id},#{comment_original_id},#{comment_content},'1',#{comment_secret},#{comment_list_no})
+	</insert>
+	
+	<update id="commentReport" parameterType="CommentVO">
+		update 
+			comment_list 
+		set 
+			comment_report = 1, comment_report_id=#{comment_report_id}
+		where 
+			comment_number = #{comment_number}
+	</update>
+</mapper>

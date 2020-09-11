@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.MainMapper">
+	<resultMap type="ProductVO" id="productResultMap">
+		<result property="product_number" column="product_number" />
+		<result property="product_id" column="product_id" />
+		
+		<result property="product_category_1" column="product_category_1" />
+		<result property="product_category_2" column="product_category_2" />
+		
+		<result property="product_subject" column="product_subject" />
+		<result property="product_content" column="product_content" />
+		<result property="product_img_1" column="product_img_1" />
+		<result property="product_img_2" column="product_img_2" />
+		<result property="product_img_3" column="product_img_3" />
+		<result property="product_img_4" column="product_img_4" />
+		<result property="product_img_5" column="product_img_5" />
+		
+		<result property="product_starting_price" column="product_starting_price" />
+		<result property="product_bidding_unit" column="product_bidding_unit" />
+		<result property="product_end_date" column="product_end_date" />
+		
+		<result property="product_delivery" column="product_delivery" />
+		<result property="product_transaction_area" column="product_transaction_area" />
+		
+		<result property="product_purchase_price" column="product_purchase_price" />
+		<result property="product_re_auction" column="product_re_auction" />
+		
+		<result property="product_current_price" column="product_current_price" />
+		<result property="product_bids" column="product_bids" />
+		<result property="product_participants" column="product_participants" />
+		<result property="product_credit_score" column="product_credit_score" />
+		<result property="product_views" column="product_views" />
+		<result property="product_issue_date" column="product_issue_date" />
+		<result property="product_progress" column="product_progress" />
+	</resultMap>
+	
+	<select id="getPopularList" resultType="com.spring.alltion.productRegistration.ProductVO">
+	<![CDATA[
+		SELECT
+		product_bids,
+		product_number, 
+		product_subject, 
+		product_img_1,
+		product_category_1, 
+		product_category_2,
+		to_char(product_issue_date, 'yyyy-mm-dd hh24:mi') as product_issue_date, 
+		to_char(product_end_date, 'yyyy-mm-dd hh24:mi') as product_end_date, 
+		product_current_price, 
+		product_purchase_price,
+		product_progress 
+		FROM (SELECT row_number()over(ORDER BY product_bids DESC)rnum, p.* 
+		      FROM product p WHERE sysdate <= product_end_date+1 and product_progress = 0)
+		WHERE rnum>=1 and rnum<=8
+	]]>
+	</select>
+	
+	<select id="getRecentList" resultType="com.spring.alltion.productRegistration.ProductVO">
+	<![CDATA[
+			SELECT
+			product_bids,
+			product_number, 
+			product_subject, 
+			product_img_1,
+			product_category_1, 
+			product_category_2,
+			to_char(product_issue_date, 'yyyy-mm-dd hh24:mi') as product_issue_date, 
+			to_char(product_end_date, 'yyyy-mm-dd hh24:mi') as product_end_date, 
+			product_current_price, 
+			product_purchase_price,
+			product_progress 
+			from (select row_number()over(order by product_issue_date desc)rnum, p.* 
+             		from product p 
+             		where sysdate <= product_end_date+1 and product_progress = 0 
+             		order by p.product_issue_date DESC)
+            where rnum>=1 and rnum<=8
+	]]>
+	</select>
+
+	<select id="getCloseDeadlineList" resultType="com.spring.alltion.productRegistration.ProductVO">
+	<![CDATA[
+		SELECT
+		product_bids,
+	    product_number, 
+	    product_subject, 
+	    product_img_1,
+	    product_category_1, 
+	    product_category_2,
+	    to_char(product_issue_date, 'yyyy-mm-dd hh24:mi') as product_issue_date, 
+	    to_char(product_end_date, 'yyyy-mm-dd hh24:mi') as product_end_date, 
+	    product_current_price, 
+	    product_purchase_price,
+	    product_progress 
+	    FROM (SELECT row_number()over(order by product_current_price desc)rnum, p.* 
+	          FROM product p 
+	          WHERE sysdate <= product_end_date+1 and product_progress = 0
+	          ORDER BY product_end_date)
+		WHERE rnum>=1 and rnum<=8
+    ]]>
+	</select>
+</mapper>

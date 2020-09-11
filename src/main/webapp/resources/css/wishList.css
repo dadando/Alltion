@@ -1,0 +1,366 @@
+/* 찜목록 시작 by.유빈 */
+/* 찜목록 공통사항 */
+.wishList {
+    max-width: 1200px;
+    margin: auto;
+    min-height: 600px;
+/*    padding: 0 10px;*/
+}
+
+.wishList * {
+    letter-spacing: 0.1px;
+}
+
+/* 타이틀 */
+.wishList--title h1 {
+    margin: 40px 0 50px 0;
+    font-size: 30px;
+    font-weight: 900;
+    position: relative;
+    padding-bottom: 7px;
+}
+
+.wishList--title h1::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 92%;
+    bottom: 0px;
+    height: 2px;
+    background-color: #F9A825;
+}
+
+/* container 시작 */
+
+.wishList--container {
+    margin: 35px 0;
+}
+
+/* 알림창 */
+.wishList--noticeList {
+    padding: 16px 18px;
+    margin-bottom: 30px;
+    border: 1px solid #ebeff2;
+    background: #fafbfc;
+}
+
+.wishList--noticeList > li {
+    position: relative;
+    padding: 3px 0 3px 10px;
+    font-size: 14px;
+    color: #565960;
+    line-height: 17px;
+}
+
+.wishList--noticeList > li::before {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #c6c9cb;
+    content: '';
+}
+
+.wishList--noticeList > li:last-child {
+    color: #ffa30e;
+}
+
+.wishList--noticeList > li:last-child::before {
+    background: #ffa30e;
+}
+
+/* 표제 */
+.wishList--caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 10px;
+}
+
+.wishList--caption > p {
+    font-size: 15px;
+}
+
+.wishList--conut {
+    color: #114da5;
+}
+
+.wishList--changeEndDateFormBtn {
+    box-sizing: border-box;
+    color: #eeeeee;
+    padding: 9px 12px;
+    background-color: #393e46;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    outline: 0;
+}
+
+/* 표 공통사항 */
+.wishList--tableWarp{
+    overflow: auto;
+}
+
+.wishList--deleteCheck {
+    flex: 0 0 4%;
+}
+
+.wishList--deleteCheck > input {
+    margin: 0 10px;
+}
+
+.wishList--info {
+    flex: 0 0 51%;
+}
+
+
+
+
+.wishList--currentPrice {
+    flex: 0 0 15%;
+    border-left: 1px solid #ececef;
+}
+
+.wishList--delivery {
+    flex: 0 0 15%;
+    border-left: 1px solid #ececef;
+}
+
+.wishList--endDate {
+    flex: 0 0 15%;
+    border-left: 1px solid #ececef;
+}
+
+/* 컬럼타이틀 */
+.wishList--columnTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #383d4a;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.wishList--columnTitle .wishList--currentPrice{
+    border-left: none;
+}
+
+.wishList--columnTitle .wishList--delivery{
+    border-left: none;
+}
+
+.wishList--columnTitle > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+/* 표 데이터 */
+.wishList--contentsWarp {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #9ca0aa;
+}
+
+.wishList--contentsWarp .wishList--deleteCheck {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wishList--contents {
+    display: flex;
+    align-items: center;
+    min-height: 150px;
+    border-top: 1px solid #cacbd4;
+}
+
+.wishList--contents > div{
+    min-height: 150px;
+}
+
+.wishList--contents p {
+    margin: 0 10px;
+}
+
+.wishList--contentsWarp .wishList--info {
+    display: flex;
+    align-items: center;
+}
+
+.wishList--thumbnail > img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.wishList--description > p {
+    padding: 3px 0;
+}
+
+.wishList--description__category {
+    color: #777;
+    font-size: 14px;
+}
+
+.wishList--description__subject {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.wishList--description__seller {
+    font-size: 14px;
+}
+
+.wishList--contentsWarp .wishList--currentPrice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wishList--contentsWarp .wishList--delivery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wishList--currentPrice__currentPrice,
+.wishList--delivery__delivery {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    border-bottom: 1px solid #e9ecef;
+    line-height: 75px;
+}
+
+.wishList--purchase_priceWarp__purchase_price,
+.wishList--purchase_priceWarp__bids,
+.wishList--delivery__transactionArea {
+    font-size: 12px;
+    color: #444;
+}
+
+.wishList--purchase_priceWarp,
+.wishList--delivery__transactionArea {
+    padding-top: 10px;
+    flex: 1 0 0;
+}
+
+.wishList--contentsWarp .wishList--endDate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.wishList--endDate > p {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.wishList--bidBtn {
+    box-sizing: border-box;
+    color: #fff;
+    padding: 9px 12px;
+    background-color: #ffa30e;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    margin-top: 8px;
+    outline: 0;
+}
+
+.wishList--delete {
+    margin-top: 14px;
+    box-sizing: border-box;
+    color: #444;
+    padding: 9px 12px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #d5dade;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    outline: 0;
+}
+
+.wishList--delete:hover {
+    background-color: #eee;
+}
+
+/* 페이지 */
+.wishList--pageWarp {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.wishList--page {
+    margin: 15px 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.wishList--page > li:not(.number) {
+    padding: 4px 17px;
+    border: 1px solid #ddd;
+    margin: 0 3px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.wishList--page > .number {
+    min-width: 36px;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    margin: 0 3px;
+    border-radius: 4px;
+}
+
+.wishList--page > .nonActive:hover {
+	cursor: pointer;
+    background-color: #eee;
+}
+
+.wishList--page > li > .material-icons {
+    font-size: 30px;
+    color: #333;
+    top: 0;
+    left: 2px;
+    position: absolute;
+}
+
+.wishList--page > li > span:not(.material-icons) {
+    font-size: 15px;
+    color: #333;
+}
+
+.wishList--page > #active {
+    cursor: default;
+    background-color: #222;
+    border-color: #222;
+}
+
+.wishList--page > #active > span {
+    color: #fff;
+}
+
+/* container 끝 */
+
+/* 로딩화면 */
+.hidden {
+	overflow: hidden;
+	height: 100%;
+}
+
+/* 찜목록 끝 by.유빈 */

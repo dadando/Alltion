@@ -1,0 +1,113 @@
+/*판매 페이지 css*/
+.main_body {
+    width: 960px;
+    position: relative;
+    height: 100%;
+    min-height: 10px;
+    margin: 50px auto 20px auto;
+}
+.bidding_title{
+	margin-bottom: 50px;
+    border-bottom: 2px solid #FFA30E;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+.bidding_notify{
+    background-color: rgba(240,240,240,0.5);
+	font-size:15px;
+	margin-bottom:50px;
+    padding: 10px;
+}
+
+.bidding_notify ul li{
+    line-height:30px;
+    padding-left:10px;
+    position: relative;
+    color: #444444;
+}
+
+.bidding_notify ul li::before {
+    position: absolute;
+    top: 13px;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #c6c9cb;
+    content: '';
+}
+	.seller--form {
+    width: 960px;
+    margin: 50px auto;
+    }
+    .seller--content {
+    width: 100%;
+    margin-top: 40px;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    }
+    .seller.list h3 {font-size: 32px;}
+    .seller_form.list li {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #dddddd;
+    
+    }
+    .seller_form__list.title {
+    flex-basis: 20%;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #dddddd;
+    font-size: 14px;
+    font-weight: bold;
+    }
+
+    .seller_form__list.content {
+        margin: 10px 0 10px 20px;
+        font-size: 14px;
+    }
+
+    .seller_form__list.content input {
+        display: none;
+    }
+
+    .seller_form__list.content input {
+        display: inline-block;
+        border: 1px border;
+    }
+
+    body a.base_btn {
+	margin-top : 5px;
+	margin-bottom : 10px;
+    height: 30px;
+    min-width: 100px;
+    line-height: 30px;
+    background: #dddddd;
+    font-size: 5px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    font-family: "맑은 고딕","Malgun Gothic";
+    border-radius: 7px;
+    float : right;
+}
+
+.page_btns{
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+.page_btns button{
+    display: inline-block;
+    text-align: center;
+    width: 35px;
+    height: 25px;
+    border: thin solid #444444;;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #444444;
+    margin: 0 2px;
+    background-color: white;
+    cursor: pointer;
+}

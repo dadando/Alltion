@@ -1,0 +1,348 @@
+@charset "UTF-8";
+
+HTML CSS JSResult
+
+.cf:before, .cf:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.cf:after {
+	clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+body {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.cf {
+	*zoom: 1;
+	width: 1160px;
+}
+
+.cTabs>div {
+	list-style: none;
+	float: left;
+	width: 90%;
+	text-align: center;
+}
+
+.cTabs>div {
+	font-size: 18px;
+	text-decoration: none;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #dddddd;
+	/*border-bottom: none;*/
+	display: block;
+	background-color: white;
+	color: black;
+	z-index: 1;
+}
+
+.cTabs>div:hover {
+	color: #ffffff;
+	cursor: pointer;
+	background-color: #ffd149;
+	font-weight: bold;
+	border-bottom: none;
+	margin-bottom: -3px;
+	border-bottom: 1px solid rgba(225, 217, 90, 0.16);
+	border-radius: 4px 4px 0 0;
+}
+
+.cTabContent {
+	padding: 10px;
+	margin-top: 24px;
+	/*background: whitesmoke;*/
+	color: #fff;
+	/*border-top: 3px solid #555555;*/
+	min-height: 260px;
+	width: 870px;
+}
+
+.wrapper {
+	width: 100%;
+	margin: 0 auto;
+	min-height: 500px;
+}
+
+.cTabs>div.active {
+	color: #ffffff;
+	background-color: rgb(249, 168, 37);
+	/*border-bottom: 3px solid #888888;*/
+	border-bottom: 1px solid rgb(249, 168, 37);
+	border-radius: 4px 4px 0 0;
+	font-weight: bold;
+}
+
+@charset "UTF-8";
+
+.wrap {
+	margin: 0 auto;
+	width: 870px;
+}
+
+.cTabContent li {
+	display: inline-block;
+	padding: 5px 5px 5px 5px;
+}
+
+.wrapper {
+	margin: 0 auto;
+	width: 660px;
+	padding-top: 40px;
+	display: inline-block;
+}
+
+.pay, .payment {
+	display: inline-block;
+	/*padding: 2% 0 0 30%;*/
+	/*width: 1190px;*/
+	min-height: 500px;
+	margin: 0 auto;
+}
+
+.chargehistory {
+	/*min-width: 362px;*/
+	position: relative;
+	width: 100%;
+	min-height: 300px;
+	align-content: center;
+}
+
+.chargehistory h3, .cancelhistory h3, paymenthistory h3 {
+	padding: 0 0 15px 0;
+}
+
+.cancelhistory {
+	/*min-width: 362px;*/
+	position: relative;
+	width: 100%;
+	min-height: 300px;
+	align-content: center;
+}
+
+.paymenthistory {
+	width: 100%;
+	min-height: 300px;
+	align-content: center;
+}
+
+.charge li {
+	display: inline;
+	border-left: 1px solid #999;
+	float: left;
+	min-width: 140px;
+	text-align: center;
+	padding: 5px 5px 5px 5px;
+}
+
+.firstcharge li {
+	display: inline;
+	float: left;
+	min-width: 140px;
+	text-align: center;
+	padding: 5px 5px 5px 5px;
+}
+
+.cancel li, .paymentlist li {
+	display: inline;
+	border-bottom: 1px solid #dddddd;
+	float: left;
+	min-width: 140px;
+	text-align: center;
+	padding: 5px 5px 5px 5px;
+}
+
+.firstcancel li, .firstline li {
+	display: inline;
+	float: left;
+	min-width: 140px;
+	text-align: center;
+	padding: 5px 5px 5px 5px;
+}
+
+.charge li:first-child, .cancel li:first-child, .paymentlist li:first-child
+	{
+	border-left: none;
+}
+
+.pay_list ul li:first-child {
+	border-left: none;
+}
+
+.payment_list ul li:first-child {
+	border-left: none;
+}
+
+.firstcharge li, .firstcancel li, .firstline li {
+	/*background-color: #BDBDBD;*/
+	background-color: #f8f8f8;
+	border-bottom: 1px solid #dddddd;
+}
+
+.firstcharge li span, .firstcancel li span, .firstline li span {
+	font-size: 14px;
+}
+
+.chargepage ul li, .cancelpage ul li, .paymentpage ul li {
+	display: inline-block;
+	margin: 0 12px;
+}
+
+.chargepage, .cancelpage, .paymentpage {
+	margin: 0 auto;
+}
+
+.page_number {
+	text-align: center;
+}
+
+.page_number a.active {
+	cursor: default;
+	font-weight: bold;
+}
+
+.paging .num:hover {
+	font-weight: bold;
+}
+
+.page_number li:hover {
+	font-weight: bold;
+}
+
+.list_title {
+	margin-bottom: 50px;
+	border-bottom: 2px solid #FFA30E;
+	display: inline-block;
+	padding-bottom: 15px;
+	font-size: 30px;
+}
+
+.main_body {
+	width: 960px;
+	position: relative;
+	height: 100%;
+	min-height: 10px;
+	margin: 50px auto 20px auto;
+}
+
+.list_notify {
+	background-color: rgba(240, 240, 240, 0.5);
+	font-size: 15px;
+	margin-bottom: 50px;
+	padding: 10px;
+}
+
+.list_notify ul li {
+	line-height: 30px;
+	padding-left: 10px;
+	position: relative;
+	color: #444444;
+}
+
+.list_notify ul li::before {
+	position: absolute;
+	top: 13px;
+	left: 0;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background: #c6c9cb;
+	content: '';
+}
+
+/*-------modal------------------------------------------------------------------*/
+#modal {
+	display: none;
+    position: fixed;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#modal h3 {
+	margin: 0;
+    font-size: 22px;
+    display: inline-flex;
+
+}
+
+#modal button {
+	display: inline-block;
+    width: 20px;
+    margin-left: calc(0% - 0px - 0px);
+    float: right;
+}
+
+#modal .modal_content {
+	width: 400px;
+    height: 140px;
+    margin: 300px auto;
+    padding: 20px 10px;
+    background: #fff;
+    border: 2px solid #666;
+}
+
+#modal .modal_layer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: -1;
+}
+/*--------------------------------------------------------------------------*/
+@media all and (min-width: 601px) {
+	.cTabs>div {
+		width: 25%;
+		/*border: 0px solid green;*/
+	}
+}
+
+@media all and (max-width: 600px) {
+	.cTabs>div.active {
+		padding-top: 19px;
+		padding-bottom: 19px;
+		margin-bottom: 0px;
+		border-radius: 10px;
+		border: 1px solid #555555;
+		border-bottom: 1px solid #555555;
+	}
+	.cTabs>div:hover {
+		padding: 19px;
+		margin-bottom: 0px;
+		border-radius: 10px;
+		border: 1px solid #555555;
+		border-bottom: 1px solid #555555;
+	}
+	.cTabs>div:hover {
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+	.cTabContent {
+		border: 1px solid #555555;
+	}
+}
+Resources1×0
+
+
+.5×0
+
+
+.25×Rerun

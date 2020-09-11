@@ -1,0 +1,85 @@
+.joinWrap {
+    padding: 100px;
+    text-align: center;
+    font-family: "맑은 고딕","Malgun Gothic";
+}
+.joinWrap h3 {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    color: #393939;
+    margin-bottom: 30px;
+}
+.joinWrap p {
+    font-size: 18px;
+    text-align: center;
+    color: #666;
+}
+.joinWrap ul {
+    overflow: hidden;
+    width: 660px;
+    margin: 40px auto 0;
+    border: 3px solid #e8e8e8;
+    box-sizing: border-box;
+}
+.joinWrap ul li:first-child {
+    border-right: 1px solid #e8e8e8;
+    box-sizing: border-box;
+}
+.joinWrap ul li dl dt {
+    padding-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    line-height: 16px;
+}
+.joinWrap ul li dl dd {
+    display: table;
+    width: 100%;
+    height: 44px;
+    vertical-align: top;
+}
+.joinWrap ul li {
+    float: left;
+    width: 327px;
+    padding: 40px 0;
+    text-align: center;
+}
+.joinWrap .sns_joinbtn {
+    display: table-cell;
+    vertical-align: middle;
+    height: 175px;
+}
+.joinWrap .sns_joinbtn a.naver {
+    background: #1ec700;
+}
+body a.base_btn {
+    display: inline-block;
+    height: 44px;
+    padding: 0 60px;
+    min-width: 118px;
+    line-height: 43px;
+    background: #FFAE36;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    font-family: "맑은 고딕","Malgun Gothic";
+    border-radius: 7px;
+}
+body a.base_btn1 {
+    display: inline-block;
+    height: 44px;
+    padding: 0 20px;
+    min-width: 118px;
+    line-height: 43px;
+    background: #1ec700;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    font-family: "맑은 고딕","Malgun Gothic";
+    border-radius: 7px;
+}

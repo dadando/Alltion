@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.ProductMapper">
+	
+	<!-- 상품(경매) 등록 -->
+	<insert id="productInsert" parameterType="ProductVO">
+		<selectKey keyProperty="product_number" resultType="ProductVO" order="BEFORE">
+			select nvl(max(product_number), 0) + 1 as product_number from product
+		</selectKey>
+		insert into product
+		values(
+			#{product_number}, <!-- 상품번호 -->
+			#{product_id}, <!-- 아이디 -->
+			#{product_category_1}, <!-- 카테고리 1차 -->
+			#{product_category_2}, <!-- 카테고리 2차 -->
+			#{product_subject}, <!-- 상품제목 -->
+			#{product_content}, <!-- 상품내용 -->
+			#{product_img_1}, <!-- 이미지(썸네일)_1 -->
+			#{product_img_2, jdbcType=VARCHAR}, <!-- 이미지(썸네일)_2 -->
+			#{product_img_3, jdbcType=VARCHAR}, <!-- 이미지(썸네일)_3 -->
+			#{product_img_4, jdbcType=VARCHAR}, <!-- 이미지(썸네일)_4 -->
+			#{product_img_5, jdbcType=VARCHAR}, <!-- 이미지(썸네일)_5 -->
+			#{product_starting_price},  <!-- 경매시작가 -->
+			#{product_bidding_unit}, <!-- 입찰단위 -->
+			to_date(#{product_end_date}, 'yyyy-mm-dd hh24:mi'), <!-- 경매종료일 -->
+			#{product_delivery}, <!-- 택배거래(비용) -->
+			#{product_transaction_area}, <!-- 거래가능지역 -->
+			#{product_purchase_price}, <!-- 즉시구매가격 -->
+			#{product_re_auction}, <!-- 재경매 -->
+			#{product_starting_price}, <!-- 경매현재가 -->
+			0, <!-- 입찰수 -->
+			0, <!-- 참가자수 -->
+			#{product_credit_score}, <!-- 신용도 -->
+			0, <!-- 조회수 -->
+			sysdate, <!-- 등록일 -->
+			0 <!-- 진행상태 -->
+		)
+	</insert>
+	
+	<!-- 경매마감일이 지났지만 마감처리가 되지않은 경매건들을 찾는다 -->
+	<select id="searchForDeadline" resultType="ProductVO">
+		select
+			product_number, <!-- 상품번호 -->
+			product_id, <!-- 아이디 -->
+			product_category_1, <!-- 카테고리 1차 -->
+			product_category_2, <!-- 카테고리 2차 -->
+			product_subject, <!-- 상품제목 -->
+			product_content, <!-- 상품내용 -->
+			product_img_1, <!-- 이미지(썸네일)_1 -->
+			product_img_2, <!-- 이미지(썸네일)_2 -->
+			product_img_3, <!-- 이미지(썸네일)_3 -->
+			product_img_4, <!-- 이미지(썸네일)_4 -->
+			product_img_5, <!-- 이미지(썸네일)_5 -->
+			product_starting_price,  <!-- 경매시작가 -->
+			product_bidding_unit, <!-- 입찰단위 -->
+			to_char(product_end_date, 'yyyy-mm-dd hh24:mi') as product_end_date, <!-- 경매종료일 -->
+			product_delivery, <!-- 택배거래(비용) -->
+			product_transaction_area, <!-- 거래가능지역 -->
+			product_purchase_price, <!-- 즉시구매가격 -->
+			product_re_auction, <!-- 재경매 -->
+			product_current_price, <!-- 경매현재가 -->
+			product_bids, <!-- 입찰수 -->
+			product_participants, <!-- 참가자수 -->
+			product_credit_score, <!-- 신용도 -->
+			product_views, <!-- 조회수 -->
+			to_char(product_issue_date, 'yyyy-mm-dd hh24:mi') as product_issue_date, <!-- 등록일 -->
+			product_progress <!-- 진행상태 -->
+		from product
+		where
+		<![CDATA[
+			product_end_date < sysdate and
+    		product_progress = 0
+   		]]>
+	</select>
+	
+	<!-- 경매마감처리를 한다 (product_progress : 0 -> 1) -->
+	<update id="changePoductProgressToEnd" parameterType="int">
+		update product
+		set product_progress = 1
+		where product_number = #{product_number}
+	</update>
+	
+	<!-- 경매마감시간을 현재시간으로 변경한다 -->
+	<update id="changePoductEndDateToNow" parameterType="int">
+		update product
+		set product_end_date = sysdate
+		where product_number = #{product_number}
+	</update>
+	
+	<!-- 상품번호를 파라미터로 하여 상품정보를 가져온다 -->
+	<select id="getProduct" parameterType="int" resultType="ProductVO">
+		select
+			product_number, <!-- 상품번호 -->
+			product_id, <!-- 아이디 -->
+			product_category_1, <!-- 카테고리 1차 -->
+			product_category_2, <!-- 카테고리 2차 -->
+			product_subject, <!-- 상품제목 -->
+			product_content, <!-- 상품내용 -->
+			product_img_1, <!-- 이미지(썸네일)_1 -->
+			product_img_2, <!-- 이미지(썸네일)_2 -->
+			product_img_3, <!-- 이미지(썸네일)_3 -->
+			product_img_4, <!-- 이미지(썸네일)_4 -->
+			product_img_5, <!-- 이미지(썸네일)_5 -->
+			product_starting_price,  <!-- 경매시작가 -->
+			product_bidding_unit, <!-- 입찰단위 -->
+			to_char(product_end_date, 'yyyy-mm-dd hh24:mi') as product_end_date, <!-- 경매종료일 -->
+			product_delivery, <!-- 택배거래(비용) -->
+			product_transaction_area, <!-- 거래가능지역 -->
+			product_purchase_price, <!-- 즉시구매가격 -->
+			product_re_auction, <!-- 재경매 -->
+			product_current_price, <!-- 경매현재가 -->
+			product_bids, <!-- 입찰수 -->
+			product_participants, <!-- 참가자수 -->
+			product_credit_score, <!-- 신용도 -->
+			product_views, <!-- 조회수 -->
+			to_char(product_issue_date, 'yyyy-mm-dd hh24:mi') as product_issue_date, <!-- 등록일 -->
+			product_progress <!-- 진행상태 -->
+		from product
+		where product_number = #{product_number}
+	</select>
+	
+	<!-- 위시리스트에 사용될 상품리스트 조회기능(페이징처리 포함) -->
+	<select id="getProductForWishList" resultType="ProductVO">
+		select *
+		from (select 
+		        row_number() over (order by wish_date asc) rnum,
+		        product_number, 
+		        product_id,
+		        product_category_1, 
+		        product_category_2, 
+		        product_subject,
+		        product_content, 
+		        product_img_1,
+		        product_img_2, 
+		        product_img_3,
+		        product_img_4, 
+		        product_img_5,
+		        product_starting_price,  
+		        product_bidding_unit, 
+		        to_char(product_end_date, 'yyyy-mm-dd hh24:mi') as product_end_date, 
+		        product_delivery, 
+		        product_transaction_area, 
+		        product_purchase_price,
+		        product_re_auction,
+		        product_current_price, 
+		        product_bids,
+		        product_participants, 
+		        product_credit_score,
+		        product_views, 
+		        to_char(product_issue_date, 'yyyy-mm-dd hh24:mi') as product_issue_date,
+		        product_progress
+	    	from product, wish_list
+	    	where wish_id = #{userId} 
+    			and product_number = wish_product_number)
+		<![CDATA[
+		where rnum >= #{startrow} and rnum <= #{endrow}
+		]]>
+	</select>
+	
+</mapper>

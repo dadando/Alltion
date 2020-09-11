@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- namespace="com.spring.mapper.SungjukMapper는 SungjukMapper인터페이스(SungjukMapper.class)의 이름을 사용한다. -->
+	<!-- root-context에서 아래와 같이 typeAliasesPackage를 설정하면 패키지 경로 생략 가능. -->
+<mapper namespace="com.spring.mapper.BidMapper">
+	
+	<!-- 응찰리스트 구하기(시간처리 to_char), bid_no 역순기준출력 -->
+	<!-- 상품번호를 통해서 구함(bid_product_number),bid_no: 페이징처리를 위해 추가한 컬럼 -->
+	<select id="bidList" parameterType="int" resultType="BidVO">
+		<![CDATA[
+		select 
+		bid_number,bid_product_number,bid_id,bid_price,to_char(bid_date,'MM-dd HH:mm:ss') as bid_date,bid_no
+		from bid_list 
+		where bid_product_number=#{bno} and bid_no>=#{bid_startrow} and bid_no<=#{bid_endrow} 
+		order by bid_no desc
+		]]>
+	</select>
+	
+	<!-- 응찰하기 -->
+	<insert id="bidInsert" parameterType="BidVO">
+		<selectKey keyProperty="bid_number" order="BEFORE" resultType="int">
+			select nvl(max(bid_number),0)+1 as bid_number from bid_list
+		</selectKey>
+		
+		insert into bid_list 
+		values(#{bid_number},#{bid_product_number},#{bid_id},#{bid_price},sysdate,#{bid_no})
+	</insert>
+	
+	<!-- 응찰테이블의 갯수구하기(상품번호를 통해서) -->
+	<select id="countBidList" parameterType="int" resultType="int">
+		select count(*)+1 from bid_list where bid_product_number=#{bid_product_number}
+	</select>
+	
+	<!-- 최고응찰자를 구함(상품번호를 통해서) -->
+	<select id="getTop_bidder_id" parameterType="int" resultType="String">
+		select bid_id 
+      	from bid_list 
+      	where bid_price = (select 
+                  nvl(max(bid_price),0) as max_bid_price 
+                  from bid_list 
+                  where bid_product_number = #{bid_product_number}) and 
+                  bid_product_number = #{bid_product_number}
+	</select>
+	
+	<!-- 현재가를 구함(응찰하기에서 사용) -->
+	<select id="selectNowPrice" parameterType="int" resultType="int">
+		select nvl(max(bid_price),0) from bid_list where bid_product_number=#{bid_product_number}
+	</select>
+	
+	<!-- 응찰 단위를 구한다(응찰하기에서 사용) -->
+	<select id="getProduct_bidding_unit" parameterType="int" resultType="int">
+		select product_bidding_unit from product where product_number = #{product_number}
+	</select>
+	
+	<!-- 응찰수 업데이트 -->
+	<update id="updateProduct_bids">
+		<selectKey keyProperty="product_bids" order="BEFORE" resultType="int">
+		select count(*) as product_bids from bid_list where bid_product_number = #{bno} order by bid_no
+		</selectKey>
+		update product set product_bids = #{product_bids} where product_number = #{bno}
+	</update>
+	
+	<!-- 참가자수 업데이트 -->
+	<update id="updateProduct_participants">
+		<selectKey keyProperty="product_participants" order="BEFORE" resultType="int">
+		select count(*) as product_participants from (select bid_id from bid_list where bid_product_number = #{bno} group by bid_id)
+		</selectKey>
+		update product set product_participants = #{product_participants} where product_number = #{bno}
+	</update>
+	
+</mapper>

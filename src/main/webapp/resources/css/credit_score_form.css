@@ -1,0 +1,78 @@
+.credit_score_form {
+    margin: 40px auto;
+    width: 1200px;
+}
+
+.member_credit_score {
+    flex-flow: column wrap;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-between; /* 중심축 */
+    margin: 0 auto;
+}
+
+.member_credit_score li {
+    flex-basis: 49%;
+}
+
+.member_credit_score h3 {
+    font-size: 1.17em;
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+.purchase_credit_score-info, .sale_credit_score-info {
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+
+.purchase_credit_score-info li, .sale_credit_score-info li {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #dddddd;
+}
+
+.purchase_credit_score-info li:last-child, .sale_credit_score-info li:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: none;
+}
+
+.purchase_credit_score-form.title, .sale_credit_score-form.title {
+    background-color: #f8f8f8;
+    border-right: 1px solid #dddddd;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px;
+    flex-basis: 30%;
+    text-align: center;
+    justify-content: center;
+}
+
+.purchase_credit_score-form.content, .sale_credit_score-form.content {
+    margin: 10px 0 10px 14px;
+    font-size: 14px;
+}
+
+/* 버튼 */
+.credit_score-btn {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.back_to_myPage {
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 2px;
+    color: #313131;
+    border: 1px solid #313131;
+    background-color: #ffffff;
+}
+
+.back_to_myPage:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #000000;
+}

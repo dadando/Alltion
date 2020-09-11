@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/* button color add */
+.btn-dark-gray{background: #666666; color: #fff !important;}
+.btn-light-gray{background: #8e8e8e; color: #fff !important;}
+.btn-beige{background: #b3a586; color: #fff !important;}
+.btn-basic{border: 1px #999 solid; background: #fff; color: #444 !important;}
+.btn-basic-green{padding: 4px 5px; border: 1px #2ea5b9 solid; background: #fff; color: #2ea5b9 !important;}
+.btn-light-blue{background: #7993b2; color: #fff !important;}
+.btn-light-beige{background: #a8928d; color: #fff !important;}
+.btn-green{background: #40aa82; border: 1px #40aa82 solid; color: #fff !important;}
+.btn-blue-green{background: #2ea5b9; border: 1px #2ea5b9 solid; color: #fff !important;}
+.btn-certify{
+	width: 180px;
+	height: 50px;
+	margin-top: 30px;
+	line-height: 35px;
+}
+.btn-tabs{
+	min-width: 180px;
+	margin-right: 3px;
+	padding: 15px 6px;
+	background: #fafafa;
+	border: 1px #cfcfcf solid;	
+}
+.btn-tabs:focus,
+.btn-tabs.active{
+	background: #fff;
+	border: 1px #114da5 solid;
+	color: #114da5;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	font-weight: bold;
+}
+.btn-col-3 .btn{
+}
+
+@media(max-width:320px){
+	.btn-col-2 .btn{
+		width: 100% !important;
+		margin-bottom: 5px;
+	}
+}
+@media(max-width:640px){
+	.btn-col-3 .btn{
+		width: 100% !important;
+		margin-bottom: 5px;
+	}
+}
+
+.box{
+	border: 1px #e0e0e0 solid;
+}
+.my-money-box {
+    margin-right: -1px;
+    padding: 25px 30px;
+}
+
+

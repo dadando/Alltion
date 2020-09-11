@@ -1,0 +1,102 @@
+/*참여 중 경매 By.HONG*/
+.main_body {
+    width: 1200px;
+    position: relative;
+    height: 100%;
+    min-height: 600px;
+    margin: 50px auto 100px auto;
+}
+.bidding_title{
+	margin-bottom: 50px;
+    border-bottom: 2px solid #FFA30E;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+.bidding_notify{
+    background-color: rgba(240,240,240,0.5);
+	font-size:15px;
+	margin-bottom:50px;
+    padding: 10px;
+}
+
+.bidding_notify ul li{
+    line-height:30px;
+    padding-left:10px;
+    position: relative;
+    color: #444444;
+}
+
+.bidding_notify ul li::before {
+    position: absolute;
+    top: 13px;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #c6c9cb;
+    content: '';
+}
+
+.table_title p{
+    font-size:13px;
+}
+.review_title{
+    display:flex;
+    justify-content: space-around;
+    border-top:2px solid black;
+    border-bottom: thin solid;
+    border-bottom-color: rgba(156,160,170,0.5);
+    background-color: rgba(240,240,240,0.5);
+    margin-top:10px;
+    text-align: center;
+    line-height:37px;
+}
+.review_no{width: 50px; border-right: thin solid; border-right-color:rgba(156,160,170,0.75);}
+.product_image{width: 100px; border-right: thin solid; border-right-color:rgba(156,160,170,0.75);}
+.product_subject{width: 200px; border-right: thin solid; border-right-color:rgba(156,160,170,0.75);}
+.review_content{width:450px; border-right: thin solid; border-right-color:rgba(156,160,170,0.75);}
+.review_writer{width:200px; border-right: thin solid; border-right-color:rgba(156,160,170,0.75);}
+.review_date{width:200px;}
+
+.review_list{
+    display:flex;
+    justify-content: space-around;
+    text-align: center;
+    border-bottom: thin solid;
+    border-bottom-color: rgba(156,160,170,0.5);
+    vertical-align: middle;
+}
+
+.review_list .review_no p{line-height:37px; font-size:14px; position:relative; top:50%;left:50%; transform:translate(-50%,-50%);}
+.product_image img{width:50px; height:50px; position:relative; top:50%;left:50%; transform:translate(-100%,-50%);}
+.product_subject p{line-height:37px;font-size: 14px;position:relative; top:50%;left:50%; transform:translate(-50%,-50%);}
+.review_list .review_content p{line-height:37px; padding-left:10px; font-size:14px; position:relative; top:50%;left:50%; transform:translate(-50%,-50%);word-break:break-all;}
+.review_list .review_writer p{line-height:37px; font-size:14px; position:relative; top:50%;left:50%; transform:translate(-50%,-50%);}
+.review_list .review_date p{line-height:37px; font-size:14px; position:relative; top:50%;left:50%; transform:translate(-50%,-50%);}
+.review_list .review_content{text-align:left;}
+
+.review_list .product_subject{display: inline-block; vertical-align: middle;}
+
+.page_btns{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.page_btns button{
+    display: inline-block;
+    text-align: center;
+    width: 35px;
+    height: 25px;
+    border: thin solid #444444;;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #444444;
+    margin: 0 2px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.no_list{
+	margin-top: 20px;
+	height: 50px;
+	border-bottom: thin solid darkgray;
+}

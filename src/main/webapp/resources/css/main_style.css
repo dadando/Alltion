@@ -1,0 +1,376 @@
+/* CSS RESET */
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #000000;
+    font-family: 'Noto Sans', 'Nanum Gothic', sans-serif;
+    letter-spacing: -1px;
+/*    border: 1px solid;*/
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+li {list-style: none;}
+
+/* 모든 페이지 공통 영역 */
+/* TOP 버튼 */
+#topKey {
+    position: fixed;
+    right: 24px;
+    bottom: 75px; /* 24 */
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    z-index: 10;
+    cursor: pointer;
+}
+
+#topKey:hover {
+    background: #F9A825;
+}
+
+.topKey_btn {
+    background: #fff;
+    border-radius: 50%;
+    border: 0;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.topKey_btn > span {
+    color: #ffffff;
+    line-height: 40px;
+}
+
+/* desktop-size(min:1280) */
+/* 헤더 by 하나 */
+/* -- 헤더 > 위 */
+.upper_header {
+    width: 100%;
+    height: 32px;
+    background-color: #BDBDBD;
+}
+
+.upper_header--nav {
+    width: 1200px;
+    margin: 0 auto;
+    font-size: 12px;
+    line-height: 32px;
+}
+
+
+.upper_header--nav a, .upper_header--nav p {
+    color: #ffffff;
+}
+
+
+.upper_header--nav ul, .upper_header--nav li, .upper_header--nav p {
+    display: inline-block;
+} /* 200619 pm12:55 수정됨 -- 이유: 클래스 명 생략해서 전체 li, p 태그에 적용됨 */
+
+.upper_header--nav ul {
+    float: right;
+}
+
+.upper_header--nav ul::after {
+    clear: both;
+    display: block;
+    content: "";
+}
+
+.upper_header--nav li {
+    padding-right: 16px;
+} /* 2020-06-23 pm 03:57 추가: li 항목이 두 개 이상으로 늘어나는 것을 대비하기 위해 */
+
+.upper_header--nav li:last-child {
+    padding-right: 0;
+} /* 2020-06-23 pm 03:57 추가: li 항목이 두 개 이상으로 늘어나는 것을 대비하기 위해 */
+
+
+/* -- 헤더 > 아래 */
+.lower_header {
+    width: 100%;
+    height: 80px;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(112, 112, 112, 0.1);
+}
+
+/* 스크롤 작동할 때 --*/
+.lower_header.sticky {
+    position: fixed;
+    top: 0;
+    z-index: 999998;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    transition: 0.8s;
+}
+
+.lower_header.sticky .category img {margin-top: 0;}
+
+.lower_header--nav {
+    width: 1200px;
+    margin: 0 auto;
+    font-size: 12px;
+}
+
+.logo {
+    display: inline-block;
+    line-height: 80px;
+    float: left;
+}
+
+
+.logo a {
+    color: #F9A825;
+    font-size: 36px;
+}
+
+.search {
+    height: 40px;
+    display: inline-block;
+}
+
+.search--select {
+    height: 40px;
+    padding-left: 8px;
+    padding-right: 4px;
+    border: 2px solid #F9A825;
+    border-right: none;
+    position: absolute;
+    top: 0;
+    left: 118px;
+}
+
+.search--select option {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.search__input {
+    width: 540px;
+    height: 40px;
+    margin-left: -4px;
+    padding-left: 12px;
+    border: 2px solid #F9A825;
+    border-left: none;
+    position: absolute;
+    top: 0;
+    left: 238px;
+}
+
+.searchBtn span {
+   font-size: 32px;
+   color: #F9A825;
+   position: absolute;
+    right: -10px;
+    top: 4px;
+}
+
+/* 카테고리 영역 */
+.cate_search {
+	display: inline-block;
+	position: relative;
+	height: 40px;
+	width: 760px;
+	margin: 20px auto;
+	padding-left: 24px;
+}
+
+.category {
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    left: 74px;
+}
+
+.category img {
+    width: 44px;
+    height: 40px;
+}
+
+.category:hover > .category--dropdown {display: block;}
+
+.category--dropdown {
+	z-index: 9999;
+    position: absolute;
+    width: 680px;
+    display: none;
+    margin-top: -4px;
+    /* background-color: #F9A825; */
+}
+
+.whole_menu {
+    /* position: absolute; */
+    /* margin: 0 0 2px 2px; */
+    width: 180px;
+    background-color: #ffffff;
+    border:  1px solid rgba(0, 0, 0, 0.1);
+    float: left;
+    text-align: center;
+}
+
+.whole_menu li {
+    position: relative;
+    font-size: 14px;
+    padding: 14px;
+    cursor: pointer;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.whole_menu li:hover > span {display: inline-block;}
+
+.whole_menu li:hover > ul {display: block;}
+
+.whole_menu li:hover > a {
+    font-weight: bold;
+    color: #F9A825;
+    border-bottom: 1px solid #F9A825;
+}
+
+.whole_menu span {
+    vertical-align: middle;
+    position: absolute;
+    right: 4px;
+    font-size: 18px;
+    color: #F9A825;
+    font-weight: bold;
+    display: none;
+}
+
+.whole_menu li ul {
+    position: absolute;
+    left: 178px;
+    top: -1px;
+    width: auto;
+    float: left;
+    width: 521px;
+    text-align: left;
+    padding: 0 32px 6px 32px;
+    background-color: #ffffff;
+    border:  1px solid rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.whole_menu li h4 {
+    padding: 14px 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.whole_menu li ul li {
+    display: inline-block;
+    text-align: left;
+    padding: 14px 20px 14px 0;
+}
+
+.whole_menu li ul li:hover > a  {
+    color: #828282;
+    font-weight: bold;
+    border-bottom: none;
+    /* border-bottom: 1px solid #828282; */
+}
+
+.detail_menu {
+    /* position: absolute; */
+    /* display: none; */
+    float: left;
+    width: 570px;
+    
+}
+
+/* 우측 아이콘 */
+.member_info {
+    float: right;
+    margin-top: 10px;
+    display: inline-block; /* 2020-06-19 pm12:58 수정됨 */
+}
+
+.member_info li {
+    text-align: center;
+    margin-left: 8px;
+    width: 58px;
+    display: inline-block; /* 2020-06-19 pm12:57 수정됨 */
+}
+
+.member_info li a {
+    display: inline-block;
+}
+
+/*
+.member_info li a img {
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+}
+*/
+
+.member_info .material-icons {
+    color: #575757;
+    font-size: 36px;
+    margin-bottom: 4px;
+}
+
+
+.member_info li a span {
+    font-size: 12px;
+    color: #575757;
+}
+
+/* desktop-size(min:1280) */
+/* 푸터 영역 by 하나 */
+.upper_footer {
+    width: 100%;
+    height: 52px;
+    border-top: 1px solid rgba(112, 112, 112, 0.2);
+}
+
+.upper_footer--list {
+    width: 1200px;
+    height: inherit;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.upper_footer--list li {
+    font-size: 16px;
+    line-height: 52px;
+    display: inline-block; /* 2020-06-19 pm 01:10 수정됨 */
+}
+
+.upper_footer--list li a {
+    border-right: 1px solid rgba(112, 112, 112, 0.5);
+    padding: 0 44px;
+}
+
+.upper_footer--list li:last-child a {
+    border-right: none;
+}
+
+.lower_footer {
+    width: 100%;
+    height: auto;
+    background-color: #F5F5F5;
+}
+
+.lower_footer__content {
+    width: 1200px;
+    padding-top: 48px;
+    margin: 0 auto;
+    
+}
+
+.lower_footer__content li {padding-bottom: 48px;}
+
+.lower_footer__content p {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #575757;
+}
+

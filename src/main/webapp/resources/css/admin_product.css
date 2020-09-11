@@ -1,0 +1,361 @@
+/* admin_product by.유빈 */
+
+/* 공통영역 */
+
+.card {
+    background: #fff;
+    box-shadow: 4px 8px 9px -2px #c7c5d8;
+    border-radius: .25rem;
+}
+
+[class $="cardWarp"] {
+    border: 1px solid #00000030;
+    margin-bottom: 30px;
+}
+
+[class $="cardWarp"] > [class $="title"] {
+    padding: .75rem 1.25rem;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid #00000030;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+[class $="cardWarp"] > [class $="title"] > i {
+    position: relative;
+    top: 1.5px;
+    padding-right: 5px;
+    font-size: 19px;
+}
+
+input[type="text"] {
+    border: 1px solid #dbdbdb;
+    height: 30px;
+    padding: 7px 10px;
+    font-size: 15px;
+    color: #7a7171;
+    width: 100%;
+}
+
+input[type="text"]:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+button {
+    outline: 0;
+}
+
+td > p{
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	width:300px;
+	overflow:hidden;	
+}
+
+.tdCenter {
+	text-align: center;
+}
+
+.tdRight {
+	text-align: right;
+}
+
+/* 메인내용 */
+section {
+    background: #e6e6e68c;
+    position: absolute;
+    top: 57px;
+    left: 220px;
+    right: 0;
+    padding: 30px 40px;
+    min-height: 1000px;
+}
+
+section > .title {
+    margin-bottom: 40px;
+    font-size: 30px;
+    font-weight: 900;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+section > .title::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    width: 130px;
+    bottom: -2px;
+    height: 2px;
+    background-color: #F9A825;
+}
+
+.listSearch--cardWarp {
+    max-width: 1200px;
+}
+
+.search-rowWarp {
+    display: flex;
+}
+
+.search-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.search-rowWarp > div {
+    width: 100%;
+}
+
+.listSearch--subtitle {
+    line-height: 45px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    background-color: #f2f5fa;
+    border-right: 1px solid #ddd;
+    flex: 0 0 33.33333%;
+}
+
+.listSearch--number,
+.listSearch--subject,
+.listSearch--id,
+.listSearch--cate,
+.listSearch--status,
+.listSearch--sort,
+.listSearch--btn {
+    flex: 0 0 33.33333%;
+}
+
+
+.listSearch--subject > .listSearch--subtitle,
+.listSearch--id > .listSearch--subtitle,
+.listSearch--date > .listSearch--subtitle,
+.listSearch--sort > .listSearch--subtitle {
+    border-left: 1px solid #ddd;
+}
+
+.listSearch--input {
+    flex: 0 0 66.66666%;
+    padding: 0 17px;
+}
+
+.listSearch--input > input{
+    width: 100%;
+}
+
+.listSearch--date {
+    flex: 0 0 66.66666%;
+}
+
+.listSearch--date > .listSearch--subtitle {
+    flex: 0 0 16.66666%;
+}
+
+.listSearch--date > .listSearch--input {
+    flex: 0 0 83.333333%;
+}
+
+.listSearch--date > .listSearch--input > input {
+    width: 27%;
+}
+
+.listSearch--date > .listSearch--input > span {
+    font-size: 20px;
+    padding: 0 10px 0 15px;
+}
+
+.ui-datepicker-trigger {
+    position: relative;
+    top: 4px;
+    left: 10px;
+    width: 24px;
+}
+
+select {
+    border: 1px solid #dbdbdb;
+    height: 30px;
+    font-size: 15px;
+    color: #7a7171;
+    margin: 0 17px;
+    padding: 0 7px;
+}
+
+.listSearch--cate > select {
+    width: 40%;
+}
+
+.listSearch--sort > select {
+    width: 50%;
+}
+
+.listSearch--status > select {
+    width: 30%;
+}
+
+select:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.listSearch--btn {
+    justify-content: flex-end;
+}
+
+.listSearch--sendSearchBtn,
+.listSearch--sendResetBtn {
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .375rem .95rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.listSearch--sendSearchBtn {
+    background-color: #4680ff;
+    border-color: #4680ff;
+    margin-right: 10px;
+}
+
+.listSearch--sendSearchBtn:hover {
+    background-color: #2066ff;
+    border-color: #135dff;
+}
+
+.listSearch--sendResetBtn {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    margin-right: 17px;
+}
+
+.listSearch--sendResetBtn:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.list--content {
+    overflow: auto;
+    margin: 10px 15px 0 15px;
+}
+
+.list--table {
+    min-width: 1400px;
+    border-spacing: 0px;
+    border-collapse: separate;
+    border: 1.5px solid #eee;
+}
+
+.list--table tr:not(.list--tableHeader):hover {
+    background: #74adf5;
+}
+
+.list--table tr:not(.list--tableHeader):hover > td,
+.list--table tr:not(.list--tableHeader):hover > td > p {
+    color: #fff;
+}
+
+.list--table .list--tableHeader > th {
+    border: 1px solid #e9ecef;
+    padding: 10px 0;
+    border-bottom: 2px solid #c8cacc;
+}
+
+.list--table tr:not(.list--tableHeader) > td {
+    border: 1px solid #e9ecef;
+    padding: 7px 15px;
+}
+
+.list--table select {
+    width: 100%;
+    margin: 0px;
+}
+
+.list--table .list--update {
+    justify-content: center;
+}
+
+.list--productEndBtn {
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-radius: 2px;
+    cursor: pointer;
+    padding: .375rem .95rem;
+    background-color: #5449b7;
+    border-color: #5449b7;
+}
+
+.list--productEndBtn:hover {
+    background-color: #1a00ff;
+    border-color: #1a00ff;
+}
+
+.list--pagingWarp {
+    margin: 15px 0;
+    min-width: 1400px;
+}
+
+.list--count {
+    font-weight: 700;
+}
+
+.list--paging {
+    display: flex;
+    text-align: center;
+}
+
+.list--paging > li:not(.number) {
+    padding: 4px 17px;
+    border: 1px solid #ddd;
+    margin: 0 3px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.list--paging > .number {
+    min-width: 36px;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    margin: 0 3px;
+    border-radius: 4px;
+}
+
+.list--paging > .list--nonActive:hover {
+	cursor: pointer;
+    background-color: #eee;
+}
+
+.list--paging > li > .material-icons {
+    font-size: 30px;
+    color: #333;
+    top: 0;
+    left: 2px;
+    position: absolute;
+}
+
+.list--paging > li > span:not(.material-icons) {
+    font-size: 15px;
+    color: #333;
+}
+
+.list--paging > #list--active {
+    cursor: default;
+    background-color: #222;
+    border-color: #222;
+}
+
+.list--paging > #list--active > span {
+    color: #fff;
+}
+
+/* admin_product 끝 by.유빈 */

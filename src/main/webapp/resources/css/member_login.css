@@ -1,0 +1,78 @@
+.category--dropdown {
+    margin-top: 0;
+}
+
+.login {
+    margin: 160px auto;
+    width: 490px;
+    border: 1px solid #FEE7C5;
+    border-radius: 4px;
+    }
+       
+    .login-screen {
+        width: 356px;
+        margin: 0 auto;
+    }
+       
+    .app-title {text-align: center;}
+       
+    .app-title h2 {
+        margin-top: 24px;
+        margin-bottom: 70px;
+        font-size: 28px;
+    }
+        
+    .login-form {
+    text-align: center;
+    }
+       
+    .control-group {
+        margin: 0 auto;
+        margin-bottom: 42px;
+        text-align: left;
+    }
+
+    .control-group input {
+        margin-top: 14px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+        font-size: 16px;
+        width: 100%;
+        padding: 4px;
+        transition: border .2s;
+    }
+
+    input:focus {
+    border: 2px solid  #F9A825;
+    box-shadow: none;
+    }
+       
+    .btn {
+        background: #F8C436;
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 25px;
+        padding: 12px 0;
+        text-decoration: none;
+        text-shadow: none;
+        border-radius: 3px;
+        box-shadow: none;
+        transition: 0.25s;
+        display: block;
+        width: 100%;
+        margin-top: 76px;
+        margin-bottom: 16px;
+        height: auto;
+    }
+
+    .btn:hover {
+      background-color:  #F9A825;
+    }
+    
+    .login-form p {
+       font-size: 14px; 
+       margin-bottom:  18px;
+    }
+       
+    .login-link {color: #A77731}
+    
+    .login-link:hover {font-weight: bold;}

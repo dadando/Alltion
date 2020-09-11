@@ -1,0 +1,226 @@
+-- by 하나
+-- 1. 구매 등급 테이블
+CREATE TABLE purchase_credit_score_list (
+    purchase_id VARCHAR2(20),
+    purchase_credit_score number not null,
+    purchase_normal number not null,
+    purchase_denial number not null,
+    purchase_undelivered number not null,
+    purchase_return number not null,
+    purchase_success_rate number not null
+); -- 생성
+
+DROP TABLE purchase_credit_score_list; -- 삭제
+
+ALTER TABLE purchase_credit_score_list
+ADD CONSTRAINT FK_purchase_id
+FOREIGN KEY (purchase_id)
+REFERENCES member(member_id); -- 외래키 부여
+
+ALTER TABLE purchase_credit_score_list
+ADD CONSTRAINT PK_purchase_id PRIMARY KEY (purchase_id); -- 기본키 부여
+
+-- 2. 회원 테이블
+create table member(
+member_name varchar2(15),
+member_id varchar2(20) primary key,
+member_password varchar2(20) not null,
+email varchar2(50) not null,
+member_phone varchar2(11) not null,
+sample4_postcode varchar2(30),
+sample4_roadAddress varchar2(50),
+sample4_jibunAddress varchar2(50),
+sample4_detailAddress varchar2(50),
+member_delete number default 0,   -- 회원탈퇴시 값이 1으로 바뀌면서 로그인 불가
+member_manager number default 0,  --0은 일반회원 1은 관리자
+member_date date not null
+
+-- 3. 판매 등급 테이블
+CREATE TABLE sale_credit_score_list (
+    sale_id VARCHAR2(20),
+    sale_credit_score number not null,
+    sale_normal number not null,
+    sale_denial number not null,
+    sale_undelivered number not null,
+    sale_return number not null,
+    sale_success_rate number not null
+);
+
+DROP TABLE sale_credit_score_list; -- 삭제
+
+ALTER TABLE sale_credit_score_list
+ADD CONSTRAINT FK_sale_id
+FOREIGN KEY (sale_id)
+REFERENCES member(member_id); -- 외래키 부여
+
+ALTER TABLE sale_credit_score_list
+ADD CONSTRAINT PK_sale_id PRIMARY KEY (sale_id); -- 기본키 부여
+
+// by.Hong
+/*
+-- 응찰하기 기능 관련 테이블
+create table bid_list(
+    bid_number number primary key, -- 응찰번호
+    bid_product_number number references product(product_number), -- 응찰한 상품번호
+    bid_id varchar2(20) references member(member_id), -- 응찰자 아이디
+    bid_price number, -- 응찰 가격
+    bid_date date default sysdate, -- 응찰한 시간
+    bid_no number -- 응찰 순서 넘버링, rnum 과 같은 효과
+);
+    
+-- 상품 상세 페이지의 댓글 관련 테이블
+create table comment_list(
+    comment_number number primary key, -- 댓글 번호
+    comment_group_number number, -- 댓글 그룹 번호 원본과 답글을 묶는 역할
+    comment_product_number number references product(product_number), -- 댓글 달린 상품번호
+    comment_id varchar2(20) references member(member_id), -- 댓글 작성한 아이디
+    comment_original_id varchar2(15), -- 답글달때 원래 댓글의 아이디
+    comment_content varchar2(1000), -- 댓글 내용
+    comment_lev varchar2(1) default '0' check(comment_lev in('0','1')), -- 0: 원글 ,1: 답글
+    comment_secret varchar2(1) default '0' check(comment_secret in('0','1')), -- 0: 비밀x , 1: 비밀o
+    comment_is_deleted varchar2(1) default '0' check(comment_is_deleted in('0','1')), -- 0: 삭제x , 1: 삭제o
+    comment_date date default sysdate, -- 댓글 작성한 날짜
+    comment_list_no number -- 댓글 순서 넘버링, rnum과 같은효과
+); 
+
+-- 판매자 등급 테이블
+CREATE TABLE sale_credit_score_list (
+    sale_id varchar2(20) constraint FK_sale_id references member(member_id), --판매자 아이디
+    sale_credit_score number default 0 not null, --판매 신용도
+    sale_normal number default 0 not null, --정상 거래
+    sale_denial number default 0 not null, --판매 거부
+    sale_undelivered number default 0 not null, --미배송
+    sale_return number default 0 not null, --반품
+    sale_success_rate number(5,2) default 0 not null, --판매성사율
+    constraint PK_sale_id primary key(sale_id)
+);
+
+/*
+review테이블 insert시 주의사항.
+review_number는 nvl(max(review_number),0)+1
+review_id 는 해당 리뷰 product_id를 받아서 입력하면 됨.
+review_evaluator 는 세션 아이디 값을 받아서 입력하면 됨.
+review_evaluate는 checkbox이용하여 입력.
+review_image는 product테이블의 product_img_1 로 입력.
+review_no 는 페이징에 사용할 넘버링. DetailMapper.java에서 countReviewList가 있는데 그거 그대로 사용하면됨. (+1)적용 해놨음.
+*/
+create table review(
+    review_number number primary key,  -- 리뷰테이블 고유번호
+    review_id varchar2(20) references member(member_id), -- 판매자 아이디
+    review_evaluator varchar2(20) references member(member_id), -- 구매자 아이디(리뷰달 아이디)
+    review_evaluate varchar2(20) check(review_evaluate in('매우 만족','만족','보통','불만족','매우 불만족')), -- 평가
+    review_image varchar2(1000), -- 썸네일 이미지 (1번이미지 사용)
+    review_subject varchar2(1000), -- 상품 제목
+    review_content varchar2(4000), -- 리뷰 내용
+    review_date date default sysdate, -- 리뷰 작성 날짜
+    review_no number -- 리뷰 넘버링 (페이징용)
+);
+
+*/
+
+create table member(
+member_name varchar2(15),
+member_id varchar2(20) primary key,
+member_password varchar2(20) not null,
+email varchar2(50) not null,
+member_phone varchar2(11) not null,
+sample4_postcode varchar2(30),
+sample4_roadAddress varchar2(50),
+sample4_jibunAddress varchar2(50),
+sample4_detailAddress varchar2(50),
+member_delete number default 0,   -- 회원탈퇴시 값이 1으로 바뀌면서 로그인 불가
+member_manager number default 0  --0은 일반회원 1은 관리자
+);
+
+
+/* by.유빈
+-- 상품정보
+CREATE TABLE product (
+		product_number number primary key, -- 상품번호
+		product_id varchar2(1000) not null, -- 아이디
+        
+		product_category_1 varchar2(1000) not null, -- 카테고리 1차
+		product_category_2 varchar2(1000) not null, -- 카테고리 2차
+        
+		product_subject varchar2(1000) not null, -- 상품제목
+		product_content varchar2(4000) not null, -- 상품내용
+        product_img_1 varchar2(1000) not null, -- 이미지(썸네일)_1
+        product_img_2 varchar2(1000), -- 이미지(썸네일)_2
+        product_img_3 varchar2(1000), -- 이미지(썸네일)_3
+        product_img_4 varchar2(1000), -- 이미지(썸네일)_4
+        product_img_5 varchar2(1000), -- 이미지(썸네일)_5
+        
+		product_starting_price number not null, -- 경매시작가
+        product_bidding_unit number not null, -- 입찰단위
+        product_end_date date not null, -- 경매종료일
+        
+        product_delivery varchar2(1000) not null, -- 택배거래(비용) : before = 선불, after = 착불, none = 불가능
+		product_transaction_area varchar2(1000) not null, -- 거래가능지역 : none = 불가능, 사용자입력값
+        
+        product_purchase_price number not null, -- 즉시구매가격
+		product_re_auction number not null, -- 재경매 : 0 = 불가능, 1 = 가능
+        
+		product_current_price number not null, -- 경매현재가
+		product_bids number not null, -- 입찰수
+		product_participants number not null, -- 참가자수
+		product_credit_score number not null, -- 신용도
+		product_views number not null, -- 조회수
+		product_issue_date date not null, -- 등록일
+		product_progress number not null -- 진행상태 : 진행중 = 0, 낙찰 = 1
+);
+
+-- 거래중
+CREATE TABLE trading (
+    trading_product_number number primary key, -- 상품번호
+    trading_buyer_id varchar2(1000) not null, -- 구매자아이디
+    trading_price number not null, -- 거래가격
+    
+    trading_deposit_deadline date not null, -- 입금기한
+    trading_waybill_deadline date, -- 운송장번호입력기한
+    trading_purchase_deadline date, -- 구매확정기한
+    trading_purchase_date date, -- 구매확정일
+    
+    trading_transaction_method varchar2(1000), -- 거래방식
+    
+    trading_sample4_postcode varchar2(1000), -- 우편번호
+    trading_sample4_roadaddress varchar2(1000), -- 도로명주소
+    trading_sample4_jibunaddress varchar2(1000), -- 지번주소
+    trading_sample4_detailaddress varchar2(1000), -- 상세주소
+    trading_phone varchar2(1000), -- 연락처
+    trading_waybill_number varchar2(1000), -- 운송장번호
+    
+    trading_progress varchar2(1000) not null, -- 진행상태
+    trading_date date not null -- 등록일
+);
+
+-- 찜목록
+create table wish_list (
+    wish_product_number number, -- 상품번호
+    wish_id varchar2(1000), -- 아이디
+    wish_date Date -- 등록일
+);
+
+-- e머니 충전/결제/리스트
+create table paylist(
+    pay_id VARCHAR(60) primary key, --구매자 id
+    pay_current_money varchar2(1000) -- 구매자가 보유한 사이버머니
+);
+create table pay(
+	pay_merchant_uid VARCHAR2(60),  --결제주문번호
+ 	pay_amount VARCHAR2(100),  --결제금액
+ 	pay_status VARCHAR2(20),  --결제상태(paid:결제, 결제취소 : 결제취소)
+    pay_id VARCHAR2(20),  --구매자 id -> member_id 외래키 추가
+    pay_lastmoney VARCHAR2(100), -- 이전 금액
+    pay_nowmoney VARCHAR2(100), -- 변동 후 금액
+    pay_date date -- 구매 날짜
+);
+create table payment(
+    payment_userId VARCHAR2(60), --결제주문번호
+	payment_product_subject VARCHAR2(60), --결제한 상품제목
+	payment_amount VARCHAR2(100), -- 거래 금액
+	payment_lastmoney VARCHAR2(100),  --결제 이전 금액(변동 전)
+	payment_nowmoney VARCHAR2(100), --결제 후 금액(변동 후)
+    payment_status VARCHAR2(20),  --(판매 시)판매입금, (구매 시)상품결제
+	payment_date date  --거래 날짜(order by용도)
+);
+*/

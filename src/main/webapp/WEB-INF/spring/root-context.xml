@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- Connection Pool 시작  by.유빈 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="oracle.jdbc.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
+		<property name="username" value="scott" />
+		<property name="password" value="123456" />
+	</bean>
+	<!-- Connection Pool 끝 -->
+	
+	<!-- Mybatis 시작 by.유빈 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- VO객체 경로 -->
+		<property name="typeAliasesPackage" value="com.spring.alltion" />
+		<!-- mapper.xml 경로 -->
+		<property name="mapperLocations" value="classpath*:/com/spring/mapper/**/*.xml;" />
+	</bean>
+
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- mapper.java 경로 -->
+	<mybatis-spring:scan base-package="com.spring.mapper" />
+	<!-- Mybatis 끝 -->
+	
+	
+	<!-- Quartz 이용시 주석 4개 없애야됨 -->
+	
+	<!-- Quartz 시작 by.유빈-->
+	<!-- bean 객체 -->
+	<!-- 1.주석 <bean id="tradingServiceImpl" class="com.spring.alltion.trading.TradingServiceImpl"/> -->
+	
+	<!-- 잡디테일  -->
+	<!-- 2.주석 <bean id="seachEndOfProduct" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	    서비스 구현 객체의 빈 이름을 인자로 줍니다.
+	    <property name="targetObject" ref="tradingServiceImpl" />
+	    서비스 객체에서 주기적으로 실행될 메소드른 지정합니다.
+	    <property name="targetMethod" value="seachEndOfProduct" />
+	    동시 실행을 방지합니다.
+	    <property name="concurrent" value="false" />
+	</bean> -->
+	
+	<!-- 트리거-->
+	<!-- 3.주석 <bean id="seachEndOfProductTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+	    <property name="jobDetail" ref="seachEndOfProduct" />
+	    5분마다 : 0 0/5 * * * ?
+	    5초마다 : 0/5 * * * * ?
+	    <property name="cronExpression" value="0/5 * * * * ?" />
+	</bean> -->
+	
+	<!-- 스케줄러 -->
+	<!-- 4.주석 <bean id="seachEndOfProductScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+	    <property name="triggers">
+	        앞에서 설정한 트리거를 등록합니다. 필요하면 여러개 만들어서 등록하면 됩니다.
+	        <list><ref bean="seachEndOfProductTrigger" /></list>
+	    </property>
+	</bean> -->
+	<!-- Quartz 끝 by.유빈-->
+	
+</beans>

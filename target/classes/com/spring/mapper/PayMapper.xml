@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+create table paylist(
+    pay_id VARCHAR(60) primary key, 구매자 id
+    pay_current_money varchar2(1000)  구매자가 보유한 사이버머니
+);
+create table pay(
+	pay_merchant_uid VARCHAR2(60),  결제주문번호
+ 	pay_amount VARCHAR2(100),  결제금액
+ 	pay_status VARCHAR2(20),  결제상태(paid:결제, 결제취소 : 결제취소)
+    pay_id VARCHAR2(20),  구매자 id -> member_id 외래키 추가
+    pay_lastmoney VARCHAR2(100),  이전 금액
+    pay_nowmoney VARCHAR2(100),  변동 후 금액
+    pay_date date  구매 날짜
+);
+ALTER TABLE pay
+ADD CONSTRAINT FK_pay_name
+FOREIGN KEY (pay_id)
+REFERENCES member(member_id); 외래키 부여
+ -->
+<mapper namespace="com.spring.mapper.PayMapper">
+ 
+ 	<!--  id는 Mapper.java(여기선 MemberMapper.java)에 동일하게 사용해야 된다. -->
+	<select id="getPayList" resultType="PayVO">
+		SELECT * FROM pay where pay_merchant_uid = #{pay_merchant_uid, jdbcType=VARCHAR}
+	</select>
+	<select id="getPayment" resultType="PaymentVO">
+		SELECT * FROM payment where payment_userId = #{payment_userId, jdbcType=VARCHAR}
+	</select>
+	<insert id="insertPay" parameterType="PayVO" >
+		INSERT INTO pay (
+			pay_merchant_uid,
+			pay_amount,
+			pay_status,
+			pay_id,
+			pay_lastmoney,
+			pay_nowmoney,
+			pay_date)
+		VALUES (
+		#{pay_merchant_uid, jdbcType=VARCHAR}, 
+		#{pay_amount, jdbcType=VARCHAR}, 
+		#{pay_status, jdbcType=VARCHAR}, 
+		#{pay_id, jdbcType=VARCHAR},
+		#{pay_lastmoney, jdbcType=VARCHAR}, 
+		#{pay_nowmoney, jdbcType=VARCHAR}, 
+		sysdate)
+	</insert>
+	
+	<delete id="deletePay" parameterType="String">
+		Delete FROM pay WHERE pay_merchant_uid = #{pay_merchant_uid}
+	</delete>
+	<!-- 
+	<update id="chargePay" parameterType="String">
+		UPDATE pay SET pay_current_money = #{convertChargeMoney} where pay_id=#{pay_id}
+	</update>
+	-->
+	<update id="cancelPay" parameterType="String">
+		UPDATE paylist SET pay_current_money = #{convertCancelMoney} where pay_id=#{pay_id}
+	</update>
+	
+	<insert id="insertPaylist" parameterType="String">
+		INSERT INTO paylist (pay_id) values (#{pay_id, jdbcType=VARCHAR})
+	</insert>
+	<update id="chargePay" parameterType="String">
+		UPDATE paylist SET pay_current_money = #{convertChargeMoney} where pay_id=#{pay_id}
+	</update>
+	<select id="findCurrentMoney" resultType="String">
+		SELECT pay_current_money FROM paylist WHERE pay_id = #{pay_id, jdbcType=VARCHAR}
+	</select>
+	<select id="findPayid" resultType="String">
+		SELECT pay_id FROM paylist WHERE pay_id = #{pay_id, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="findChargelist" resultType="PayVO">
+	<![CDATA[
+		select * 
+		from(select row_number() over(order by p.pay_date desc) as rnum, p.* 
+    		from pay p 
+    		where pay_id = #{pay_id} and pay_status = #{pay_status})
+		where rnum>=#{startrow1} and rnum<=#{endrow1}
+	]]>
+	</select>
+
+	<select id="findCancellist" resultType="PayVO">
+	<![CDATA[
+		select * 
+		from(select row_number() over(order by p.pay_date desc) as rnum, p.* 
+    		from pay p 
+    		where pay_id = #{pay_id} and pay_status = #{pay_status})
+		where rnum>=#{startrow2} and rnum<=#{endrow2}
+	]]>
+	</select>
+	
+	<select id="getPaycount" parameterType="String" resultType="int">
+		SELECT count(*) FROM pay where pay_status = #{pay_status} and pay_id=#{pay_id}
+	</select>
+	
+	<update id="changeMoney" parameterType="String">
+		UPDATE paylist SET pay_current_money = #{amount} where pay_id=#{userId}
+	</update>
+	
+	<select id="getPaymentlist" resultType="PaymentVO">
+	<![CDATA[
+		select * 
+		from(select row_number() over(order by payment_date desc) as rnum, p.* 
+    		from payment p 
+    		where payment_userId = #{payment_userId}) 
+		where rnum>=#{startrow3} and rnum<=#{endrow3}
+	]]>
+	</select>
+	
+	<insert id="insertPayment" parameterType="PaymentVO" >
+		INSERT INTO payment (
+			payment_userId,
+			payment_product_subject,
+			payment_amount,
+			payment_lastmoney,
+			payment_nowmoney,
+			payment_status,
+			payment_date)
+		VALUES (
+		#{payment_userId, jdbcType=VARCHAR}, 
+		#{payment_product_subject, jdbcType=VARCHAR}, 
+		#{payment_amount, jdbcType=VARCHAR}, 
+		#{payment_lastmoney, jdbcType=VARCHAR},
+		#{payment_nowmoney, jdbcType=VARCHAR}, 
+		#{payment_status, jdbcType=VARCHAR}, 
+		sysdate)
+	</insert>
+	
+	<select id="getPaymentcount" parameterType="String" resultType="int">
+		SELECT count(*) FROM payment where payment_userId = #{payment_userId}
+	</select>
+</mapper>
